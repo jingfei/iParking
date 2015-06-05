@@ -68,7 +68,7 @@ exports.analysisIMG = {
 	run: function(api, data, next){
 		api.car.analysisIMG(data.params.image, function(error, result){
 			data.response.result = result;
-			next(error);
+			next();
 		});
 	}
 };

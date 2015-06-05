@@ -4,3 +4,4 @@ server/pids
 server/public
 server/log
 server/test
+lot/*.jpg

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style/semantic.css"/>
+	<link rel="stylesheet" type="text/css" href="style/main.css"/>
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/semantic.js"></script>
 	<script src="js/main.js"></script>
@@ -13,7 +14,7 @@
 			loc_x: {identifier: 'loc_x', rules:[{type: 'empty'}] },
 			loc_y: {identifier: 'loc_y', rules:[{type: 'empty'}] },
 		});
-		$('form#imgForm').form({
+		$('#imgForm').form({
 			image: {identifier: 'image', rules:[{type: 'empty'}] },
 		});
 	});
@@ -316,36 +317,27 @@
 			<div class="field"></div>
 		</div>
 		</div>
-		<h3 class="ui dividing header">image here (unfinished)</h3>
-		<form id="imgForm" action="http://140.116.246.222:8080/api/analysisIMG" method="post"> 
-		<div class="two fields required">
-			<div class="five wide field">
-				<div class="ui radio checkbox" style="display:block">
-					<input type="radio" name="image" />
-					<label>base64</label>
-					<div>
-						<textarea></textarea>
-					</div>
-				</div>
-			</div>
-			<div class="five wide field">
-				<div class="ui radio checkbox">
-					<input type="radio" name="image" />
-					<label>upload</label>
-					<div class="ui icon input">
-						<input type="file" name="image_file" /> 
-						<i class="attach icon"></i>
-					</div>
-				</div>
-			</div>
+		<h3 class="ui dividing header">test parking image</h3>
+		<div class="ui message ten wide field">
+			you can get base64 image code here: <a href="http://www.base64-image.de/" target="_blank">http://www.base64-image.de/</a>
 		</div>
+		<div class="ui message ten wide field" id="imgMessage" style="display:none">
+		</div>
+		<div id="imgForm">
 		<div class="two fields">
-			<div class="field">
-				<button type="submit" class="ui submit button">Submit</button>
+			<div class="five wide required field">
+				<label>base64-code</label>
+				<textarea id="image" name="image"></textarea>
 			</div>
 			<div class="field"></div>
 		</div>
-		</form>
+		<div class="two fields">
+			<div class="field">
+				<button id="imgSubmit" class="ui submit button">Submit</button>
+			</div>
+			<div class="field"></div>
+		</div>
+		</div>
 	</div></div>
 </body>
 </html>

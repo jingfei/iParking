@@ -6,11 +6,6 @@ module.exports={
 	initialize: function(api, next){
 		var redis = api.redis.client;
 		api.car={
-			analysisIMG: function(image, next){
-				fs.writeFile("./20150522test.jpg", image, 'base64', function(err){
-					if(err) next(err);
-				});
-			},
 			getAddress: function(loc_x, loc_y, lang, next){
 				var time = new Date().getTime();
 				geocoder.reverseGeocode(loc_x, loc_y, function(error, geo){
@@ -31,6 +26,20 @@ module.exports={
 						data.address.push(geo.results[i]["formatted_address"]);
 					next(error, data);
 				}, {language: lang});
+			},
+			analysisIMG: function(image, next){
+				var fileName = "20150606test.jpg";
+				fs.writeFile(fileName, image, 'base64', function(err){
+					var exec = require('child_process').exec,
+						child,
+						result = {stdout: "", stderr: ""};
+					child = exec('../lot/test '+fileName, 
+							function(err,stdout,stderr){
+						result["stdout"] = stdout;
+						result["stderr"] = stderr;
+						next(err, result);
+					});
+				});
 			},
 			getData: function(name, loc_x, loc_y, next){
 				var data = {
