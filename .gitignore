@@ -1,0 +1,6 @@
+server/node_modules
+server/*.jpg
+server/pids
+server/public
+server/log
+server/test
