@@ -318,16 +318,32 @@
 		</div>
 		</div>
 		<h3 class="ui dividing header">test parking image</h3>
-		<div class="ui message ten wide field">
-			you can get base64 image code here: <a href="http://www.base64-image.de/" target="_blank">http://www.base64-image.de/</a>
-		</div>
 		<div class="ui message ten wide field" id="imgMessage" style="display:none">
 		</div>
 		<div id="imgForm">
+		<div class="inline fields">
+			<label for="image_way">select the way to upload image:</label>
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input type="radio" name="image_way" value="base64" checked="" />
+					<label>give me base64-code</label>
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input type="radio" name="image_way" value="file" />
+					<label>jpeg file upload</label>
+				</div>
+			</div>
+		</div>
 		<div class="two fields">
-			<div class="five wide required field">
-				<label>base64-code</label>
-				<textarea id="image" name="image"></textarea>
+			<div class="ten wide field ui icon input" id="base64_field">
+				<input type="text" name="image_base64" id="image_base64" placeholder="base64-code" />
+				<i class="keyboard icon"></i>
+			</div>
+			<div class="five wide field ui icon input" id="file_field" style="display:none">
+				<input type="file" name="image_file" id="image_file" />
+				<i class="attach icon"></i>
 			</div>
 			<div class="field"></div>
 		</div>
@@ -336,6 +352,10 @@
 				<button id="imgSubmit" class="ui submit button">Submit</button>
 			</div>
 			<div class="field"></div>
+		</div>
+		<div class="ui message ten wide field">
+			useful links:<br/>
+			<ul><li><a href="http://www.base64-image.de/" target="_blank">convert image to base64</a></li></ul>
 		</div>
 		</div>
 	</div></div>

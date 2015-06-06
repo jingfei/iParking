@@ -1,22 +1,3 @@
-exports.getData = {
-  name: 'getData',
-  description: 'just test here',
-
-  inputs:{
-		name: {required: true},
-		loc_y: {required: true},
-		loc_x: {required: true},
-  },
-   
-  outputExample:{},
-
-  run: function(api, data, next){
-		api.car.getData(data.params.name, data.params.loc_x, data.params.loc_y, function(error){
-    	next(error);
-  	});
-	}
-};
-
 exports.loadData = {
 	name: 'loadData',
 	description: 'test load redis',
@@ -57,8 +38,9 @@ exports.getAddress = {
 
 exports.analysisIMG = {
 	name: 'analysisIMG',
-	description: 'test image analysis',
+	description: 'test image analysis (by base64 code)',
 	inputs:{
+		way: {required: true},
 		image: {required: true},
 	},
 	outputExample: {
@@ -66,7 +48,7 @@ exports.analysisIMG = {
 		 },
 	},
 	run: function(api, data, next){
-		api.car.analysisIMG(data.params.image, function(error, result){
+		api.car.analysisIMG(data.params.way, data.params.image, function(error, result){
 			data.response.result = result;
 			next();
 		});

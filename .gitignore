@@ -4,4 +4,5 @@ server/pids
 server/public
 server/log
 server/test
+server/nohup.out
 lot/*.jpg

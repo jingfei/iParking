@@ -5,7 +5,6 @@ exports.default = {
       get: [
         { path: '/getAddress', action: 'getAddress' }, // (GET) /api/users
         { path: '/analysisIMG', action: 'analysisIMG' }, // (GET) /api/users
-        { path: '/get', action: 'getData' }, // (GET) /api/users
         { path: '/load', action: 'loadData' }, // (GET) /api/users
         { path: '/search/:term/limit/:limit/offset/:offset', action: 'search' }, // (GET) /api/search/car/limit/10/offset/100
       ],
