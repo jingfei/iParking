@@ -27,32 +27,19 @@ module.exports={
 					next(error, data);
 				}, {language: lang});
 			},
-			analysisIMG: function(way, image, next){
+			analysisIMG: function(image, next){
 				var fileName = "public/upload.jpg";
-				if(way=="file")
-					fs.rename(image, fileName, function(err){
-						var exec = require('child_process').exec,
-							child,
-							result = {stdout: "", stderr: ""};
-						child = exec('../lot/test '+fileName, 
-								function(err,stdout,stderr){
-							result["stdout"] = stdout;
-							result["stderr"] = stderr;
-							next(err, result);
-						});
-					});	
-				else
-					fs.writeFile(fileName, image, 'base64', function(err){
-						var exec = require('child_process').exec,
-							child,
-							result = {stdout: "", stderr: ""};
-						child = exec('../lot/test '+fileName, 
-								function(err,stdout,stderr){
-							result["stdout"] = stdout;
-							result["stderr"] = stderr;
-							next(err, result);
-						});
+				fs.writeFile(fileName, image, 'base64', function(err){
+					var exec = require('child_process').exec,
+						child,
+						result = {stdout: "", stderr: ""};
+					child = exec('../lot/test '+fileName, 
+							function(err,stdout,stderr){
+						result["stdout"] = stdout;
+						result["stderr"] = stderr;
+						next(err, result);
 					});
+				});
 			},
 			loadData: function(name, next){
 				redis.hgetall(name, function(error, data){

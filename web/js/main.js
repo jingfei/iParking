@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var reader = new FileReader();
 	$("#addrSubmit").click(function(event){
 		event.preventDefault();
 		$.ajax({
@@ -30,23 +31,23 @@ $(document).ready(function(){
 	});
 	$("#imgSubmit").click(function(event){
 		event.preventDefault();
+		$(".form").addClass("loading");
 		var way = $("input[name=image_way]:checked").val(), imageVal;
-		if(way == "file") imageVal = $("#image_file").val();
+		if(way == "file") imageVal = reader.result.substring(reader.result.search(",")+1);
 		else imageVal = $("#image_base64").val();
-		alert(way+"\n"+imageVal);
 		$.ajax({
 			method: "POST",
 			url: "http://140.116.246.222:8080/api/analysisIMG", 
 			data: {
-				way: way,
 				image: imageVal,
 			}
 		}).done(function(msg){
+			$(".form").removeClass("loading");
 			$("#imgMessage").show();
 			var out = "<table><tr><th>stdout</th><td>&nbsp;&nbsp;</td><td>";
 			out += msg["result"]["stdout"]+"</td></tr><tr><th>stderr</th><td>&nbsp;&nbsp;</td><td>";
 			out += msg["result"]["stderr"]+"</td></tr></table>";
-			out += "<img src='http://140.116.246.222:8080/upload.jpg />";
+			out += "<img src='data:image/jpeg;base64,"+imageVal+"' />";
 			$("#imgMessage").html(out);
 		});
 	});
@@ -60,6 +61,11 @@ $(document).ready(function(){
 			$("#file_field").hide();
 			$("#base64_field").show();
 		}
+	});
+	/* file change */
+	$(':file').change(function(){
+		var file = this.files[0];
+		if(file) reader.readAsDataURL(file);
 	});
 });
 

@@ -40,7 +40,7 @@ exports.analysisIMG = {
 	name: 'analysisIMG',
 	description: 'test image analysis (by base64 code)',
 	inputs:{
-		way: {required: true},
+//		way: {required: true},
 		image: {required: true},
 	},
 	outputExample: {
@@ -48,7 +48,7 @@ exports.analysisIMG = {
 		 },
 	},
 	run: function(api, data, next){
-		api.car.analysisIMG(data.params.way, data.params.image, function(error, result){
+		api.car.analysisIMG(data.params.image, function(error, result){
 			data.response.result = result;
 			next();
 		});
