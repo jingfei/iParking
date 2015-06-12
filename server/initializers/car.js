@@ -33,7 +33,7 @@ module.exports={
 					var exec = require('child_process').exec,
 						child,
 						result = {stdout: "", stderr: ""};
-					child = exec('../lot/test '+fileName, 
+					child = exec('/home/bubblegray/test/test '+fileName, 
 								{env:
 									{'OpenCV': '"`pkg-config --cflags --libs opencv`"',
 									 'DISPLAY': ':0.0',
