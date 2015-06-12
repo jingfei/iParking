@@ -28,13 +28,18 @@ module.exports={
 				}, {language: lang});
 			},
 			analysisIMG: function(image, next){
-				var fileName = "public/upload.jpg";
+				var fileName = "./public/upload.jpg";
 				fs.writeFile(fileName, image, 'base64', function(err){
 					var exec = require('child_process').exec,
 						child,
 						result = {stdout: "", stderr: ""};
 					child = exec('../lot/test '+fileName, 
-							function(err,stdout,stderr){
+								{env:
+									{'OpenCV': '"`pkg-config --cflags --libs opencv`"',
+									 'DISPLAY': ':0.0',
+									}
+								},
+								function(err,stdout,stderr){
 						result["stdout"] = stdout;
 						result["stderr"] = stderr;
 						next(err, result);

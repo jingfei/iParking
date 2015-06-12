@@ -19,14 +19,14 @@ bool cmp(Point a,Point b)
 	return a.y<b.y;
 }
 
-//int main(int argc, char* argv[])
-int main()
+int main(int argc, char* argv[])
+//int main()
 {
     Mat src, dst, color_dst,src2;
-#if 0
+#if 1
 	src=imread(argv[1], 1);//ÀÉ®×¸ô®|
 	src2=imread(argv[1], 1);
-	String sender_id = argv[2];
+	//String sender_id = argv[2];
 #else
     //src=imread("I:\\image\\11_.jpg", 1);
 	//src2=imread("I:\\image\\11_.jpg", 1);
@@ -311,7 +311,7 @@ int main()
 		if (maxX-minX==0 || maxY-minY==0)
 		{
 			cout<<"no parking spot"<<endl;
-			waitKey(0);
+		//	waitKey(0);
 			return 0;
 		}
 
@@ -356,7 +356,7 @@ int main()
 				IplImage *color_dst2= new IplImage(color_dst);
 			//	color_dst2 = &IplImage(color_dst);
 				cvSaveImage("result.jpg",color_dst2);
-				waitKey(0);
+			//	waitKey(0);
 				return 1;
 			}
 			else
@@ -373,7 +373,7 @@ int main()
 			//	color_dst2 = &IplImage(color_dst);
 				cvSaveImage("result.jpg",color_dst2);
 
-				waitKey(0);
+			//	waitKey(0);
 				return 0;
 			}
 		#else
