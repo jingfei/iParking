@@ -4,7 +4,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		$.ajax({
 			method: "POST",
-			url: "http://140.116.246.222:8080/api/getAddress", 
+			url: "http://140.116.245.252:8080/api/getAddress", 
 			data: {
 				loc_x: $("#loc_x").val(),
 				loc_y: $("#loc_y").val(),
@@ -29,6 +29,26 @@ $(document).ready(function(){
 			$("#addrMessage").html(out);
 		});
 	});
+	$("#locSubmit").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			method: "POST",
+			url: "http://140.116.245.252:8080/api/getLoc", 
+			data: {
+				addr: $("#addr").val(),
+				lang: $("#lang").val(),
+			}
+		}).done(function(msg){
+			$("#locMessage").show();
+			var firstAddr = true;
+			var out = "<table><tr><th>language</th><td>&nbsp;&nbsp;</td><td>";
+			out += $("#lang2").val()+"</td></tr><tr><th>address</th><td>&nbsp;&nbsp;</td><td>"
+			out += $("#addr").val()+"</td></tr><tr><th>location</th><td>&nbsp;&nbsp;</td><td>(";
+			out += msg["result"]["loc_x"]+", "+msg["result"]["loc_y"]+")</td></tr>";
+			out += "</table>";
+			$("#locMessage").html(out);
+		});
+	});
 	$("#imgSubmit").click(function(event){
 		event.preventDefault();
 		$(".form").addClass("loading");
@@ -37,7 +57,7 @@ $(document).ready(function(){
 		else imageVal = $("#image_base64").val();
 		$.ajax({
 			method: "POST",
-			url: "http://140.116.246.222:8080/api/analysisIMG", 
+			url: "http://140.116.245.252:8080/api/analysisIMG", 
 			data: {
 				image: imageVal,
 			}

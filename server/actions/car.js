@@ -36,6 +36,29 @@ exports.getAddress = {
 	}
 };
 
+exports.getLoc = {
+	name: 'getLoc',
+	description: 'convert address to location',
+	inputs:{
+		addr: {required: true},
+		lang: {required: false},
+	},
+	outputExample: {
+		 "result": {
+			 "createAt": "Thu May 21 2015 23:07:49 GMT+0800 (CST)",
+			 "address": "Balud Road, Balud, Masbate, Philippines",
+			 "loc_x": "12.123456",
+			 "loc_y": "123.123456"
+		 },
+	},
+	run: function(api, data, next){
+		api.car.getLoc(data.params.addr, data.params.lang, function(error, result){
+			data.response.result = result;
+			next(error);
+		});
+	}
+};
+
 exports.analysisIMG = {
 	name: 'analysisIMG',
 	description: 'test image analysis (by base64 code)',

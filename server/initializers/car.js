@@ -27,16 +27,40 @@ module.exports={
 					next(error, data);
 				}, {language: lang});
 			},
+			getLoc: function(addr, lang, next){
+				var time = new Date().getTime();
+				geocoder.geocode(addr, function(error, geo){
+					var data = {
+						createAt: new Date(time).toString(),
+						addr: addr,
+					};
+					data.loc_x=geo.results[0].geometry.location.lat;
+					data.loc_y=geo.results[0].geometry.location.lng;
+					/* find road */
+			//		for(i in geo.results){
+			//			for( j in geo.results[i]["address_components"])
+			//				for(k in geo.results[i]["address_components"][j]["types"])
+			//					if(geo.results[i]["address_components"][j]["types"][k]=="route")
+			//						data.road = geo.results[i]["address_components"][j]["long_name"];
+			//		}
+			//		/* find each possible address */
+			//		data.address = new Array();
+			//		for( i in geo.results)
+			//			data.address.push(geo.results[i]["formatted_address"]);
+					next(error, data);
+				}, {language: lang});
+			},
 			analysisIMG: function(image, next){
 				var fileName = "./public/upload.jpg";
 				fs.writeFile(fileName, image, 'base64', function(err){
 					var exec = require('child_process').exec,
 						child,
 						result = {stdout: "", stderr: ""};
-					child = exec('/home/bubblegray/test/test '+fileName, 
+					child = exec('/home/bubblegray/iParking/lot/test '+fileName, 
 								{env:
 									{'OpenCV': '"`pkg-config --cflags --libs opencv`"',
 									 'DISPLAY': ':0.0',
+									 'XAUTHORITY': '/home/bubblegray/.Xauthority'
 									}
 								},
 								function(err,stdout,stderr){
