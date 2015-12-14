@@ -36,17 +36,6 @@ module.exports={
 					};
 					data.loc_x=geo.results[0].geometry.location.lat;
 					data.loc_y=geo.results[0].geometry.location.lng;
-					/* find road */
-			//		for(i in geo.results){
-			//			for( j in geo.results[i]["address_components"])
-			//				for(k in geo.results[i]["address_components"][j]["types"])
-			//					if(geo.results[i]["address_components"][j]["types"][k]=="route")
-			//						data.road = geo.results[i]["address_components"][j]["long_name"];
-			//		}
-			//		/* find each possible address */
-			//		data.address = new Array();
-			//		for( i in geo.results)
-			//			data.address.push(geo.results[i]["formatted_address"]);
 					next(error, data);
 				}, {language: lang});
 			},
