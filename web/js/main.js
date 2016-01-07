@@ -67,7 +67,7 @@ $(document).ready(function(){
 			var out = "<table><tr><th>stdout</th><td>&nbsp;&nbsp;</td><td>";
 			out += msg["result"]["stdout"]+"</td></tr><tr><th>stderr</th><td>&nbsp;&nbsp;</td><td>";
 			out += msg["result"]["stderr"]+"</td></tr></table>";
-			out += "<img src='data:image/jpeg;base64,"+imageVal+"' />";
+			out += "<img src='data:image/jpeg;base64,"+imageVal+"' style='width: 100%' />";
 			$("#imgMessage").html(out);
 		});
 	});

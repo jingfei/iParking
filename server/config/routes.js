@@ -8,8 +8,9 @@ exports.default = {
         { path: '/analysisIMG', action: 'analysisIMG' }, // (GET) /api/users
         { path: '/load', action: 'loadData' }, // (GET) /api/users
         { path: '/search/:term/limit/:limit/offset/:offset', action: 'search' }, // (GET) /api/search/car/limit/10/offset/100
-        { path: '/transTainanFrom', action: 'transTainanFrom' }, 
-        { path: '/transTainanTo', action: 'transTainanTo' }, 
+        { path: '/transTainan', action: 'transTainan' }, 
+        { path: '/addGPS', action: 'addGPS' }, 
+        { path: '/searchSpace', action: 'searchSpace' }, 
       ],
       
       /* ---------------------

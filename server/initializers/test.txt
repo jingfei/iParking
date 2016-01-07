@@ -1,0 +1,9 @@
+ /* Querying */
+        collection.find({ name: 'Fred Chien' }, function(err, data) {
+            /* Found this People */
+            if (data) {
+                console.log('Name: ' + data.name + ', email: ' + data.email);
+            } else {
+                console.log('Cannot found');
+            }
+        });

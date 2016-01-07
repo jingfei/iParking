@@ -1,27 +1,29 @@
- {
-  "author"      : "Jingfei <jingfei955047@gmail.com>",
-  "name"        : "iParking_server",
-  "description" : "iParking back-end",
-  "version"     : "0.0.1",
-  "engines"     : {
+{
+  "author": "Jingfei <jingfei955047@gmail.com>",
+  "name": "iParking_server",
+  "description": "iParking back-end",
+  "version": "0.0.1",
+  "engines": {
     "node": ">=0.10.0"
   },
-  "dependencies" : {
-    "actionhero" : "11.2.2",
-    "ws"         : "latest",
-    "grunt"      : "latest"
+  "dependencies": {
+    "actionhero": "11.2.2",
+    "ws": "latest",
+    "grunt": "latest",
+    "geocoder": "~0.2.2",
+    "google-geocoder": "~0.1.4",
+    "mongodb": "~2.0.52"
   },
-  "devDependencies" : {
-    "mocha"  : "latest",
-    "should" : "latest"
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest"
   },
-  "scripts" : {
-    "help"         : "actionhero help",
-    "start"        : "actionhero start",
-    "actionhero"   : "actionhero",
-    "startCluster" : "actionhero startCluster",
-    "test"         : "mocha"
+  "scripts": {
+    "help": "actionhero help",
+    "start": "actionhero start",
+    "actionhero": "actionhero",
+    "startCluster": "actionhero startCluster",
+    "test": "mocha"
   },
-  "repository" : {
-  }
+  "repository": {}
 }

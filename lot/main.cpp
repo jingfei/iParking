@@ -77,6 +77,10 @@ int main(int argc, char* argv[])
 			(*it)[2]=0;
 		}
 	}
+	
+	namedWindow("test",1);
+	imshow("test",cut);
+	//waitKey(0);
 
     Canny( cut, dst, 50, 200, 3 );//edge detect
     cvtColor( dst, color_dst, CV_GRAY2BGR );

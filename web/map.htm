@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Polylines</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+// This example creates a 2-pixel-wide red polyline showing the path of William
+// Kingsford Smith's first trans-Pacific flight between Oakland, CA, and
+// Brisbane, Australia.
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: {lat: 22.984161, lng: 120.233204},
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  });
+
+  var flightPlanCoordinates = [
+    {lat: 22.9814522, lng: 120.2006721},
+    {lat: 22.9797086, lng: 120.2006116}
+  ];
+  var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+  var flightPlanCoordinates2 = [
+    {lat: 22.9649406, lng: 120.227515},
+    {lat: 22.966791, lng: 120.227517}
+  ];
+  var flightPath2 = new google.maps.Polyline({
+    path: flightPlanCoordinates2,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  flightPath.setMap(map);
+  flightPath2.setMap(map);
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsDRrd6d0FIq1rbOp1_Meq4xqQNM61E1g&signed_in=true&callback=initMap"></script>
+  </body>
+</html>
