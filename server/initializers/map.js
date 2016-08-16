@@ -13,7 +13,7 @@ module.exports={
 	initialize: function(api, next){
 		api.map={
 			transTainan: function(website, next){
-				if(website==null) website="http://data.tainan.gov.tw/api/action/datastore_search?resource_id=597f3e87-d326-4404-9a64-efc30eeac5e3&limit=1";
+				if(website==null) website="http://data.tainan.gov.tw/api/action/datastore_search?resource_id=597f3e87-d326-4404-9a64-efc30eeac5e3&limit=300";
 				var data = Object();
 				// Set the headers
 				var headers = {
