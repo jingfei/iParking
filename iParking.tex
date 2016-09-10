@@ -1,0 +1,293 @@
+%"runningheads" enables:
+%  - page number on page 2 onwards
+%  - title/authors on even/odd pages
+%This is good for other readers to enable proper archiving among other papers and pointing to content.
+%Even if the title page states the title, when printed and stored in a folder, when blindly opening the folder, one could hit not the title page, but an arbitrary page. Therefore, it is good to have title printed on the pages, too.
+\documentclass[runningheads,a4paper]{llncs}
+
+%Even though `american`, `english` and `USenglish` are synonyms for babel package (according to https://tex.stackexchange.com/questions/12775/babel-english-american-usenglish), the llncs document class is prepared to avoid the overriding of certain names (such as "Abstract." -> "Abstract" or "Fig." -> "Figure") when using `english`, but not when using the other 2.
+\usepackage[english]{babel}
+
+%better font, similar to the default springer font
+%cfr-lm is preferred over lmodern. Reasoning at http://tex.stackexchange.com/a/247543/9075
+\usepackage[%
+rm={oldstyle=false,proportional=true},%
+sf={oldstyle=false,proportional=true},%
+tt={oldstyle=false,proportional=true,variable=true},%
+qt=false%
+]{cfr-lm}
+%
+%if more space is needed, exchange cfr-lm by mathptmx
+%\usepackage{mathptmx}
+
+\usepackage{graphicx}
+
+%extended enumerate, such as \begin{compactenum}
+\usepackage{paralist}
+
+%put figures inside a text
+%\usepackage{picins}
+%use
+%\piccaptioninside
+%\piccaption{...}
+%\parpic[r]{\includegraphics ...}
+%Text...
+
+%Sorts the citations in the brackets
+%It also allows \cite{refa, refb}. Otherwise, the document does not compile.
+%  Error message: "White space in argument"
+\usepackage{cite}
+
+\usepackage[T1]{fontenc}
+
+%for demonstration purposes only
+\usepackage[math]{blindtext}
+
+%for easy quotations: \enquote{text}
+\usepackage{csquotes}
+
+%enable margin kerning
+\usepackage{microtype}
+
+%tweak \url{...}
+\usepackage{url}
+\urlstyle{same}
+%improve wrapping of URLs - hint by http://tex.stackexchange.com/a/10419/9075
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+%nicer // - solution by http://tex.stackexchange.com/a/98470/9075
+%DO NOT ACTIVATE -> prevents line breaks
+%\makeatletter
+%\def\Url@twoslashes{\mathchar`\/\@ifnextchar/{\kern-.2em}{}}
+%\g@addto@macro\UrlSpecials{\do\/{\Url@twoslashes}}
+%\makeatother
+
+%diagonal lines in a table - http://tex.stackexchange.com/questions/17745/diagonal-lines-in-table-cell
+%slashbox is not available in texlive (due to licensing) and also gives bad results. This, we use diagbox
+%\usepackage{diagbox}
+
+%required for pdfcomment later
+\usepackage{xcolor}
+
+% new packages BEFORE hyperref
+% See also http://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
+
+%enable hyperref without colors and without bookmarks
+\usepackage[
+%pdfauthor={},
+%pdfsubject={},
+%pdftitle={},
+%pdfkeywords={},
+bookmarks=false,
+breaklinks=true,
+colorlinks=true,
+linkcolor=black,
+citecolor=black,
+urlcolor=black,
+%pdfstartpage=19,
+pdfpagelayout=SinglePage,
+pdfstartview=Fit
+]{hyperref}
+%enables correct jumping to figures when referencing
+\usepackage[all]{hypcap}
+
+%enable nice comments
+\usepackage{pdfcomment}
+\newcommand{\commentontext}[2]{\colorbox{yellow!60}{#1}\pdfcomment[color={0.234 0.867 0.211},hoffset=-6pt,voffset=10pt,opacity=0.5]{#2}}
+\newcommand{\commentatside}[1]{\pdfcomment[color={0.045 0.278 0.643},icon=Note]{#1}}
+
+%compatibality with TODO package
+\newcommand{\todo}[1]{\commentatside{#1}}
+
+%enable \cref{...} and \Cref{...} instead of \ref: Type of reference included in the link
+\usepackage[capitalise,nameinlink]{cleveref}
+%Nice formats for \cref
+\crefname{section}{Sect.}{Sect.}
+\Crefname{section}{Section}{Sections}
+
+\usepackage{xspace}
+%\newcommand{\eg}{e.\,g.\xspace}
+%\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\eg}{e.\,g.,\ }
+\newcommand{\ie}{i.\,e.,\ }
+
+%introduce \powerset - hint by http://matheplanet.com/matheplanet/nuke/html/viewtopic.php?topic=136492&post_id=997377
+\DeclareFontFamily{U}{MnSymbolC}{}
+\DeclareSymbolFont{MnSyC}{U}{MnSymbolC}{m}{n}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+    <-6>  MnSymbolC5
+   <6-7>  MnSymbolC6
+   <7-8>  MnSymbolC7
+   <8-9>  MnSymbolC8
+   <9-10> MnSymbolC9
+  <10-12> MnSymbolC10
+  <12->   MnSymbolC12%
+}{}
+\DeclareMathSymbol{\powerset}{\mathord}{MnSyC}{180}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+%Works on MiKTeX only
+%hint by http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
+%also http://tex.stackexchange.com/questions/4397/make-ligatures-in-linux-libertine-copyable-and-searchable
+%This allows a copy'n'paste of the text from the paper
+\input glyphtounicode.tex
+\pdfgentounicode=1
+
+\title{iParking -- Real-Time Parking Space Monitor and Guiding System with Cloud Service}
+%If Title is too long, use \titlerunning
+%\titlerunning{Short Title}
+\titlerunning{iParking}
+
+%Single insitute
+\author{Ching-Fei Yang \and You-Huei Ju \and Chung-Ying Hsieh \and Chia-Ying Lin \and Meng-Hsun Tsai \and Hei-Ling Chang}
+%If there are too many authors, use \authorrunning
+\authorrunning{Ching-Fei Yang et al.}
+\institute{National Cheng Kung University}
+
+%Multiple insitutes
+%Currently disabled
+%
+\iffalse
+%Multiple institutes are typeset as follows:
+\author{Firstname Lastname\inst{1} \and Firstname Lastname\inst{2} }
+%If there are too many authors, use \authorrunning
+%\authorrunning{First Author et al.}
+
+\institute{
+Insitute 1\\
+\email{...}\and
+Insitute 2\\
+\email{...}
+}
+\fi
+			
+\maketitle
+
+\begin{abstract}
+By the popularization of cars, number of vehicles owned by each person
+grows with passing days. However, the number of parking areas is out of
+proportion. In order to satisfy the requirements of parking space and
+reduce illegal parking, we propose iParking, a real-time parking space
+monitoring and guiding system, in this paper. 
+
+We lay emphasis on roadside parking. The system determines and records
+empty parking spaces through cloud computing, wireless technology
+between vehicles and image analysis. It tells you the nearest location
+of empty parking space while drivers have requests. We expect the system
+to cause attention to more people and government, and to solve relative
+problems about parking space. 
+\end{abstract}
+
+\keywords{cloud computing, image recognition, parking space management, wireless technology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\subsection{Research motivation}
+%
+According to statistics, the amount of vehicles increases yearly in
+Taiwan. People usually create chaos near parking space while taking
+plenty of time to find it. That is to say, parking problem has become
+people's harassment. It is shown from statistical data in Ministry of
+Transportation, Taiwan that the number of registered vehicles is
+7,554,319 until December 2014 \cite{mich:tar}; However, it is also mentioned that
+the number of legal parking space is about four million in total. We can say that
+parking space is in short supply with the disparity of vehicles.
+Moreover, it will cause several problems such as the extremely slow
+speed while finding parking space, scrambling for roads with scooters,
+parking temporarily in dangerous part, or driving U-turn illegally. The
+behavior will not only break the safety and regular of transportation
+but also make noise and consume resource.
+
+Take Tainan City, Taiwan for example [2], high road trip rate gives rise
+to high parking demand in many areas in Tainan. Up to now, there are
+totally about 580 thousand registered cars and trucks while around
+11,000 parking spaces are planned. Furthermore, due to the unreasonable
+proportion of parking spaces (including roadside parking, off-street
+parking, and spaces attached in building), roadside parking space is not
+enough obviously. Theoretically, the number of roadside parking space is
+required to reach 20 percent. Otherwise, it will result in lack of
+parking space, spending too much time finding space, or etc.
+
+It is easy to observe that some vehicles need to find parking space by
+themselves while roadside parking spaces are not enough. The situation
+will bring out arbitrary parking, and it is also the main reason of
+illegal parking. In addition, according to Pollster online market survey
+[3], around sixty percent of people are bothered by parking issue. Thus,
+we build this application in order to provide nearby parking space
+information to drivers immediately and reduce traffic problems.
+
+Recently, LBS (Location-Based Service) [4] is getting noticed along with
+the appearance of smartphones. LBS can apply broadly to different area
+like health, job, daily life, and etc. Thus, how to use LBS to help
+different users find the appropriate parking space is vital. The usage
+of monitoring parking space now is to provide roadside parking space's
+locations at best, but it will not tell drivers where the vacant space
+is. Thus, we would like to develop a monitor and guiding system focus on
+roadside parking to provide the information of nearby parking space and
+help drivers park with the fastest way.
+
+
+\blindtext\todo{Refine me}
+
+Winery~\cite{Winery} is graphical \commentontext{modeling}{modeling with one \enquote{l}, because of AE} tool.
+
+\begin{figure}
+Simple Figure
+\caption{Simple Figure}
+\label{fig:simple}
+\end{figure}
+
+\begin{table}
+\caption{Simple Table}
+
+\label{tab:simple}
+Simple Table
+\end{table}
+
+cref Demonstration: Cref at beginning of sentence, cref in all other cases.
+
+\Cref{fig:simple} shows a simple fact, although \cref{fig:simple} could also show something else.
+
+\Cref{tab:simple} shows a simple fact, although \cref{tab:simple} could also show something else.
+
+\Cref{sec:intro} shows a simple fact, although \cref{sec:intro} could also show something else.
+
+Brackets work as designed:
+<test>
+
+The symbol for powerset is now correct: $\powerset$ and not a Weierstrass p ($\wp$).
+
+\begin{inparaenum}
+\item All these items...
+\item ...appear in one line
+\item This is enabled by the paralist package.
+\end{inparaenum}
+
+``something in quotes'' using plain tex or use \enquote{the enquote command}.
+
+\section{Conclusion and Outlook}
+
+\subsubsection*{Acknowledgments}
+...
+
+In the bibliography, use \texttt{\textbackslash textsuperscript} for ``st'', ``nd'', ...:
+E.g., \enquote{The 2\textsuperscript{nd} conference on examples}.
+When you use \href{http://www.jabref.org}{JabRef}, you can use the clean up command to achieve that.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{splncs03}
+\bibliography{iParking}
+
+
+All links were last followed on October 5, 2014.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
