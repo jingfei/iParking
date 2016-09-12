@@ -5,6 +5,12 @@
 %Even if the title page states the title, when printed and stored in a folder, when blindly opening the folder, one could hit not the title page, but an arbitrary page. Therefore, it is good to have title printed on the pages, too.
 \documentclass[runningheads,a4paper]{llncs}
 
+% use chinese
+\usepackage{CJKutf8}
+
+% use subpackage
+\usepackage{subfigure}
+
 %Even though `american`, `english` and `USenglish` are synonyms for babel package (according to https://tex.stackexchange.com/questions/12775/babel-english-american-usenglish), the llncs document class is prepared to avoid the overriding of certain names (such as "Abstract." -> "Abstract" or "Fig." -> "Figure") when using `english`, but not when using the other 2.
 \usepackage[english]{babel}
 
@@ -130,6 +136,7 @@ pdfstartview=Fit
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 \begin{document}
+\begin{CJK}{UTF8}{bsmi}
 
 %Works on MiKTeX only
 %hint by http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
@@ -144,28 +151,12 @@ pdfstartview=Fit
 \titlerunning{iParking}
 
 %Single insitute
-\author{Ching-Fei Yang \and You-Huei Ju \and Chung-Ying Hsieh \and Chia-Ying Lin \and Meng-Hsun Tsai \and Hei-Ling Chang}
+\author{Ching-Fei Yang \and You-Huei Ju \and Chung-Ying Hsieh \and
+Chia-Ying Lin \and Meng-Hsun Tsai \and Hui-Ling Chang}
 %If there are too many authors, use \authorrunning
 \authorrunning{Ching-Fei Yang et al.}
-\institute{National Cheng Kung University}
+\institute{Computer Science, National Cheng Kung University}
 
-%Multiple insitutes
-%Currently disabled
-%
-\iffalse
-%Multiple institutes are typeset as follows:
-\author{Firstname Lastname\inst{1} \and Firstname Lastname\inst{2} }
-%If there are too many authors, use \authorrunning
-%\authorrunning{First Author et al.}
-
-\institute{
-Insitute 1\\
-\email{...}\and
-Insitute 2\\
-\email{...}
-}
-\fi
-			
 \maketitle
 
 \begin{abstract}
@@ -197,7 +188,7 @@ Taiwan. People usually create chaos near parking space while taking
 plenty of time to find it. That is to say, parking problem has become
 people's harassment. It is shown from statistical data in Ministry of
 Transportation, Taiwan that the number of registered vehicles is
-7,554,319 until December 2014 \cite{mich:tar}; However, it is also mentioned that
+7,554,319 until December 2014 \cite{motc}; However, it is also mentioned that
 the number of legal parking space is about four million in total. We can say that
 parking space is in short supply with the disparity of vehicles.
 Moreover, it will cause several problems such as the extremely slow
@@ -206,7 +197,7 @@ parking temporarily in dangerous part, or driving U-turn illegally. The
 behavior will not only break the safety and regular of transportation
 but also make noise and consume resource.
 
-Take Tainan City, Taiwan for example [2], high road trip rate gives rise
+Take Tainan City, Taiwan for example \cite{strategyTainan}, high road trip rate gives rise
 to high parking demand in many areas in Tainan. Up to now, there are
 totally about 580 thousand registered cars and trucks while around
 11,000 parking spaces are planned. Furthermore, due to the unreasonable
@@ -220,11 +211,11 @@ It is easy to observe that some vehicles need to find parking space by
 themselves while roadside parking spaces are not enough. The situation
 will bring out arbitrary parking, and it is also the main reason of
 illegal parking. In addition, according to Pollster online market survey
-[3], around sixty percent of people are bothered by parking issue. Thus,
+\cite{Pollster}, around sixty percent of people are bothered by parking issue. Thus,
 we build this application in order to provide nearby parking space
 information to drivers immediately and reduce traffic problems.
 
-Recently, LBS (Location-Based Service) [4] is getting noticed along with
+Recently, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
 the appearance of smartphones. LBS can apply broadly to different area
 like health, job, daily life, and etc. Thus, how to use LBS to help
 different users find the appropriate parking space is vital. The usage
@@ -235,59 +226,450 @@ roadside parking to provide the information of nearby parking space and
 help drivers park with the fastest way.
 
 
-\blindtext\todo{Refine me}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related work}\label{sec:relatedWork}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Winery~\cite{Winery} is graphical \commentontext{modeling}{modeling with one \enquote{l}, because of AE} tool.
+According to the target of our goal, we will discuss the topic about
+``demand of parking space'', ``Transmitting and analyzing driving records'',
+and ``Comparing with existing parking space monitored technique''.
+
+%
+\subsection{Demand of parking space}
+%
+
+In the statistical table of important indicators from Ministry of
+Transportation, Taiwan \cite{motc}, it is pointed out that parking space is one
+of the important indicators in addition to the number of vehicles.
+\Cref{fig:StatisticalTable} is the comparison chart between the number of vehicles and
+parking spaces from 2006 to 2014 in Taiwan.
 
 \begin{figure}
-Simple Figure
-\caption{Simple Figure}
-\label{fig:simple}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/Statistical_Table.png}
+\end{center}
+\caption{Statistical table of vehicles and parking spaces' number from
+2006 to 2014}
+\label{fig:StatisticalTable}
 \end{figure}
 
-\begin{table}
-\caption{Simple Table}
+It is shown from \Cref{fig:StatisticalTable} that the difference between supply and demand
+of parking space is about two million. In addition, it is pointed out
+from trend of line that the growth rate of vehicles and parking spaces
+is closed. However, it is not simple to add parking spaces because it
+involves road network planning. In this knotty situation, it becomes
+vital and urgent to solve the management of parking space in order to
+make good use of limited resource.
 
-\label{tab:simple}
-Simple Table
-\end{table}
+Furthermore, some recent researches verify that people would rather
+spend more time finding roadside parking space than off-street parking
+even if there are vacant spaces in the off-street parking lot \cite{OnStreetParking}. Take
+Tainan City for example, service in parking lot does not meet drivers'
+expect, such as high parking fee, mess surroundings, or etc. Hence, the
+situation results in low usage rate of parking lot and shortage of
+roadside parking space. Thus, to solve the problem of roadside parking
+is necessary.
 
-cref Demonstration: Cref at beginning of sentence, cref in all other cases.
+%
+\subsection{Transmitting and analyzing driving records}
+%
 
-\Cref{fig:simple} shows a simple fact, although \cref{fig:simple} could also show something else.
+%
+\subsubsection{Cloud storage and computing}
+%
 
-\Cref{tab:simple} shows a simple fact, although \cref{tab:simple} could also show something else.
+Cloud Storage is an online service which can save data on virtual server
+through Internet. The service become more and more popular due to the
+popularity of Internet and the increasing demand of data storage. That
+is to say, simply save data in actual hard dick is getting insufficient.
+Therefore, limited storage devices will bring more benefit by Internet
+and storage virtualization technique.
 
-\Cref{sec:intro} shows a simple fact, although \cref{sec:intro} could also show something else.
+In order to improve the efficiency of driving records, and reduce the
+capacity of mobile device. We will refer to existing cloud storage
+service, analyzing data through cloud server, and send the parking
+information to users who have request.
 
-Brackets work as designed:
-<test>
+%
+\subsubsection{Static image streaming}
+%
 
-The symbol for powerset is now correct: $\powerset$ and not a Weierstrass p ($\wp$).
+Streaming media is a process to compress a series of media data, send
+through network section, and offer real-time media service on the
+Internet. By the technique, media data are able to watch without
+downloading whole media. Therefore, it is called ``streaming'' because
+data in the process behaves like running water.
 
-\begin{inparaenum}
-\item All these items...
-\item ...appear in one line
-\item This is enabled by the paralist package.
-\end{inparaenum}
+We can say that static image streaming is to connect images, and to
+record the event over the next period of time. Under the premise that
+analyzing driving records accurately, we will use static image streaming
+to lessen the burden instead of sending whole driving record.
 
-``something in quotes'' using plain tex or use \enquote{the enquote command}.
+%
+\subsubsection{Analyzing vacant parking space}
+%
 
-\section{Conclusion and Outlook}
+In the reference \cite{ParkingSpot}, the author has proposed solutions to detect if
+parking spaces are vacant. Its technique includes Hough line detection
+and Canny edge detection, and implementing by OpenCV library. The
+original method has two limitations. The first one is that it can only
+identify one photo at a time while the another is that only the parking
+space at bottom right corner can be identified. We breakthrough them by
+using static image streaming.
 
-\subsubsection*{Acknowledgments}
-...
+%
+\subsection{Existing parking space monitored technique}
+%
 
-In the bibliography, use \texttt{\textbackslash textsuperscript} for ``st'', ``nd'', ...:
-E.g., \enquote{The 2\textsuperscript{nd} conference on examples}.
-When you use \href{http://www.jabref.org}{JabRef}, you can use the clean up command to achieve that.
+All of existing parking space monitored techniques are limited to
+parking lot and only supported by sensors. For instance, intelligent
+parking lot uses wireless sensor network, ZIBEE, pressure sensors
+\cite{PaymentSystem}.
+They update database by sensors and knowing if it is empty. The another
+instance is Eco-Community plan developed by several schools
+\cite{EcoCommunity}. Its
+main method is using the sensitivity of the sensor, Octopus II, and
+update changes to database. Therefore, the changes will tell users
+information about parking spaces. However, the two techniques have a big
+constraint when it comes to downtown area. It is a huge challenge to set
+up sensors for all parking spaces in downtown due to the fee of building
+and maintenance. That is to say, both of them are not suitable to
+roadside parking in comparison with our system.
+
+As regards other apps in the market, they are connected to nearby
+parking lot, and offering real-time information. However, only few of
+them mention payment information about roadside parking. In conclusion,
+none of the apps in the market provide function to find roadside parking
+spaces until now.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Service and System Structure}\label{sec:service}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\subsection{Software platform}
+%
+
+We choose smartphone and related device to complete mobility, driving
+recorder, and Network communication by reason of the target users,
+people with mobile vehicle. We build the application base on Android,
+and using Java to implement code structure and GUI design.
+
+%
+\subsection{Features and efficacy}
+%
+
+%
+\subsubsection{Monitoring parking space}
+%
+
+The situation of parking space is different from area, timing, and
+location. Therefore, the key point is how to monitor the specific
+parking space immediately. Besides, if there are many people use this
+service at the same time, it will be fairly accurate with steadily
+update.
+
+%
+\subsubsection{Saving and analyzing driving recorder}
+%
+
+In the process of detecting vacant parking space's condition, it is
+necessary to analyze big data and use large storage. Hence, we use cloud
+service and client-server model to handle and send all the requests in
+order to reduce the usage of memory, storage, and workload.
+
+%
+\subsubsection{Data transmission}
+%
+
+If the goal is to keep high accuracy and immediacy, the system will
+bring out high Internet usage because it continuing transfers driving
+recorder. Therefore, we will capture driving image with a fixed distance
+according to speed of the vehicle. Coordinating with GPS position, it
+will become image streaming instead of video. That is to say, capacity
+and the time of data transmission can be saved.
+
+%
+\subsection{Structure}
+%
+
+We mainly focus on car owners. Besides, we will use our own approach to
+detect driving record automatically and communicate between vehicles.
+The application is built on Android, and expected to run the program on
+driving recorders. We will limit to a specific road section while
+testing and developing the system.
+
+Four steps are supposed to proceed. First, determine the specific road
+section, and collect data; Next, sort out the collected data, and start
+to plan the structure of program; Then, begin to develop the program,
+add GUI, do simulation, and test system. Finally, analyze and present
+whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
+
+\begin{figure}
+\begin{center}
+% \includegraphics[width=0.8\textwidth]{sample.png}
+\end{center}
+\caption{Research flow diagram}
+\label{fig:flowDiagram}
+\end{figure}
+
+%
+\subsubsection{Building cloud server and algorithm design}
+%
+
+The main usage of cloud server is to implement each operated function,
+handle users' request, and provide storage to save driving records. The
+operated function includes receiving image data from users, analyzing
+images, building database, searching database, and etc. Hold time is the
+first concern because of massive calculation. The other factor is the
+availability of data, for example, we will not use old data and data
+which has been analyzed in the same location. This algorithm will help
+reduce repeated operations, furthermore, it helps us make sure that we
+are analyzing real-time image in every data.
+
+%
+\subsubsection{Program structure in device and UI design}
+%
+
+We will plan our service with relation to different characters. For
+example, it is necessary for users to search nearby parking space, it is
+required for devices to send image information to cloud server, and it
+is important for servers to analyze and collect data. As for UI design
+in app, in order to realize convenient searching function and interface,
+it need to be designed from the view of users.
+
+The error of GPS measurement is about 5 to 10 meters, and we can say
+that it is about 1 or 2 roadside parking spaces. In order to enhance the
+accuracy, we will combine Google Maps API, and take the advantage of its
+navigation and distance matrix service. Besides accessing the speed and
+distance of vehicles, the API can also help send GPS location to keep
+loading and operating fast in the device.
+
+When it comes to clients, we will check whether there is anyone else
+sending the same information of specific location at the same time or
+not. It will not send information if anyone else is sending the data.
+However, if there is not anyone else sending the data, we plan to
+capture image immediately after moving a small and appropriate distance
+and send to cloud server.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
+\end{center}
+\caption{System flow chart}
+\label{fig:flowChart}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementataion}\label{sec:implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The system is divided into three parts - image recongization, cloud
+server, and client's application. At first, the three parts will be implemented
+seaprately. They will be combined and operate after they all make a certain proportain.
+
+\subsection{Image recognition of roadside parking space}
+
+Image recoginition and analysis of roadside parking space is implemented by C++ with
+OpenCV library. The program will return if the image of parking space is
+vacant after recieved an image.
+
+\subsubsection{Setting ROI (Region of Interest)}
+
+First, the program will convert the image into gray scale. The reason is
+that the perspective of image will affect the degree of image
+recognition. Moreover, the image will be divided into four equal parts.
+Only the right-bottom part will be reserved because the spaces are
+usually located in the right hand side.
+
+\begin{figure}
+	\subfigure[Gray scale image] {
+		\includegraphics[scale=0.8]{Figures/grayScaleImage.png}
+	}
+	\hspace{0.5in}
+	\subfigure[ROI image] {
+		\includegraphics[scale=0.8]{Figures/ROIImage.png}
+	}
+	\caption{Setting ROI}
+	\label{fig:ROI}
+\end{figure}
+
+\subsubsection{Sides detection and Noice reduction on Image} 
+
+The program uses Canny edge detection in OpenCV to find each side of
+parking space. Afterward it reduces noice by the way, Median Blur.
+(\Cref{sideDetecting})
+
+\begin{figure}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[scale=0.7]{Figures/sideDetecting.png}
+		\caption{Detect each side}
+		\label{sideDetecting}
+	\end{minipage}
+	\hspace{0.5in}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[scale=0.7]{Figures/drawParkingSpace.png}
+		\caption{Draw parking space}
+		\label{drawParkingSpace}
+	\end{minipage}
+\end{figure}
+
+\subsubsection{Find out parking spaces}
+
+First, find out straight line with Hough line detection, and detect
+which one is the line of parking space by angle and intersection of
+lines. (\Cref{drawParkingSpace})
+
+If the appropriate space is not found, the program will return the
+result of no vacant space (equals to occupied by vehicle). However, if
+the space is found, it will continue to next to detect if the space is
+able to use.
+
+\subsubsection{Detect if the parking space is able to use}
+
+If the ratio between the side of parking space and its shelter is more
+than a certain number, it means that the space has been occupied and the
+program will return no vacant spaces. On the contrary, it will return
+there is a vacant parking space.
+
+\begin{figure}
+	\subfigure[Available parking space] {
+		\includegraphics[scale=0.7]{Figures/availableParkingSpace.png}
+	}
+	\hspace{0.5in}
+	\subfigure[Unavailable parking space] {
+		\includegraphics[scale=0.7]{Figures/unavailableParkingSpace.png}
+	}
+	\caption{Detect parking space}
+	\label{detectingParkingspace}
+\end{figure}
+
+\subsection{Cloud analyzing server}
+
+After passing image recognition of roadside parking space testing, the
+program mentioned above will be moved to cloud server. Moreover, it will
+coordinate with the open data offered by government. The data will
+provide the information about roadside parking space. Therefore, we are
+able to know which road sections do not have spaces, prevent analyze the
+images from those sections. We implement the server by nodejs action
+hero framework; In addition to offering API with http, we will provide
+interface for webpages in order to let users find parking spaces
+directly. Non-relational database, Mongo, is also used to accerlate
+access and operated speed. 
+
+Cloud server will translate longitude and latitude into address
+information while recieving GPS information and images by users. Next,
+it will compare the road section with open data to confirm if the
+section provides parking spaces. After successful analysis, the result
+with address will update to database for other users.
+
+\subsection{Mobile APP (client side)}
+
+It is divided into several steps to implement, and mainly separated into
+user (device) and server side. First, we use Android platform with
+Android Studio and Android SDK, which are based on JAVA, to develop
+client’s application.
+
+
+\begin{figure}
+	\subfigure[Home] {
+		\includegraphics[scale=0.3]{Figures/userHome.png}
+		\label{fig:userHome}
+	}
+	\hspace{0.1in}
+	\subfigure[Record] {
+		\includegraphics[scale=0.3]{Figures/userRecord.png}
+		\label{fig:userRecord}
+	}
+	\hspace{0.1in}
+	\subfigure[Setting] {
+		\includegraphics[scale=0.3]{Figures/userSetting.png}
+		\label{fig:userSetting}
+	}
+	\hspace{0.1in}
+	\subfigure[Result] {
+		\includegraphics[scale=0.3]{Figures/userResult.png}
+		\label{fig:userResult}
+	}
+	\hspace{0.1in}
+	\subfigure[Map] {
+		\includegraphics[scale=0.3]{Figures/userMap.png}
+		\label{fig:userMap}
+	}
+	\caption{User interface}
+	\label{fig:userInterface}
+\end{figure}
+
+\Cref{fig:userInterface} is our main interface and function.
+\Cref{fig:userHome} is the first screen of the system. You
+can choose the function of both recording and searching.
+\Cref{fig:userRecord} is recording screen. It will use device's
+camera automatically, and temporarily save the records in iParking
+folder in order to let users check the
+record, and choose if they want to provide it to other users or delete it. After
+uploading the record, it will be deleted. \Cref{fig:userSetting}
+is the setting page. Users can change their sending rate (network flow)
+and searching range while finding parking space.
+\Cref{fig:userResult} and \Cref{fig:userMap} are both the part of searching
+parking spaces. Users will know how many parking spaces nearby and
+they can be navigated to the nearest space combined with Google api.
+
+\subsection{Testing}
+
+In the part of testing, we will initially test client and server side
+separately, and then merge them with UI design. Finally, we will test
+the integrated system by the following steps. First, a single vehicle.
+That is to test with different speed, and make sure that static image
+streaming is worked with cloud server. Next, test the efficiency of
+multiple vehicles, and verify that no images will be in the same
+location at the same time. The last step is to confirm that client side
+can get the correct information immediately.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion and Future Work}\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Conclusion}
+
+本系統之目的是希望透過我們的停車查詢系統，能提供使用者一個實用又好操作的應用程式，使其有路邊停車需求時能快速找到停車位，降低查找車位時所造成的交通問題、空氣污染問題與違規停車的機率。
+
+目前已經有一個簡單卻完整的系統，包含了遠端伺服器、伺服器中內建的影像分析技
+術，以及 Android 手機 APP 可以供使用者實際使用，對於未來，除了希望能在
+iPhone 和 Windows phone
+所搭載的作業系統開發相同的手機應用程式外，我們更希望能再針對影像
+辨識準確率、壓力測試、車載網路這三大方向進行努力。 
+
+\subsection{Future Work}
+
+\subsubsection{影像辨識準確率}
+
+目前影像辨識準確率因受環境因素影像`在夜晚、雨天，甚至天氣偏陰暗時會有偏高的錯誤率。對於天氣陰暗這點，理論上可以用不同的環境變數去克服，只是得讓系統得以事先得知當時的天氣狀況，自行判斷該用哪組環境變數。目前想到的可行方案為以當天氣象局所公布的氣象資訊作為參考依準。
+
+至於夜晚和雨天，就得直接從演算法的部分著手，夜晚或許可以先將影像整體對比度及亮度調高，使得畫面中的停車格線和停車格中的車輛能夠明顯到足以辨識的程度，才有辦法做進一步的分析;雨天則得先去掉雨滴所造成的影像雜訊與克服影像模糊的部分。對於這兩種狀況目前仍在研讀他人論文，思考可行解決方案，相信有朝一日該系統定能克服此兩種因環境所造成的低辨識率狀況。
+
+\subsubsection{壓力測試}
+
+由於目前系統尚未有多人同時使用的狀況，因此其實不確定當使用者一多時系統是否仍能負擔。針對該部分，當初是希望能先將系統修改至更加完善後，再推出給親朋好友試用，一邊希望他們能夠給些回饋讓系統更加穩定，另一方面也可以做壓力負載的測試，確認現在伺服器是否能夠支持使用該系統的用戶皆能正常使用。
+
+\subsubsection{車載網路}
+
+車載網路是一種透過隨意網路提供車輛之間的通訊，藉由無線通訊與資料傳遞技術，串聯交通工具以及路邊交通設施，所形成的特殊的專用網路，屬於高度客制化的行動式隨意網路，且比起一般隨意網路
+(Ad Hoc)，車載網路擁有相對較高的速度\cite{AdHoc}。現今車載網路之應用範疇多為智慧型運輸系統 (Intelligent
+Transportation System, ITS
+)，其九大服務項目中包含安全性應用、交通管理與環境資訊與便利生活訊息傳送幾大範圍。
+
+希望當未來 VANET 技術在台灣發展更加成熟時，本系統可以透過車載網路，讓用戶端的車輛彼此間得以直接進行溝通，使得同一時段內，同一相近車輛群中，只會有一台車輛負責上傳行車記錄影像，避免停車位計數錯誤與影像重複分析所造成的額外負擔。
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{splncs03}
 \bibliography{iParking}
 
 
-All links were last followed on October 5, 2014.
+All links were last followed on September 11, 2016.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\end{CJK}
 \end{document}
