@@ -11,6 +11,10 @@
 % use subpackage
 \usepackage{subfigure}
 
+% tikz package
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
 %Even though `american`, `english` and `USenglish` are synonyms for babel package (according to https://tex.stackexchange.com/questions/12775/babel-english-american-usenglish), the llncs document class is prepared to avoid the overriding of certain names (such as "Abstract." -> "Abstract" or "Fig." -> "Figure") when using `english`, but not when using the other 2.
 \usepackage[english]{babel}
 
@@ -407,7 +411,41 @@ whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
 
 \begin{figure}
 \begin{center}
-% \includegraphics[width=0.8\textwidth]{sample.png}
+	% Define block styles
+	\tikzstyle{startstop} = [rectangle, rounded corners, minimum
+width=3cm, minimum height=1cm,text centered, text width=3cm, draw=black, fill=red!30]
+	\tikzstyle{process} = [rectangle, minimum width=3cm, minimum
+height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
+	\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm,
+text centered, text width=3cm, draw=black, fill=green!30]
+	\tikzstyle{arrow} = [thick,->,>=stealth]
+	\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium
+right angle=110, minimum width=2cm, minimum height=1cm, text centered,
+text width=3cm,  draw=black, fill=blue!30]
+	    
+	\begin{tikzpicture}[node distance=2cm]
+	    % Place nodes
+	    \node [startstop] (init) {initialize model};
+	    \node [process, below of=init] (function) {plan for each function};
+	    \node [process, below of=function] (space) {provide space to store driving record};
+	    \node [io, below of=space] (receive) {receive users' requests};
+	    \node [process, right of=receive, xshift=2cm] (design) {design UI interface};
+	    \node [process, above of=design] (system) {implement the whole system};
+	    \node [decision, above of=system, yshift=1.5cm] (testing) {test client and server side separately};
+	    \node [decision, right of=testing, xshift=3cm] (integrate) {integrate all structures};
+		\node [startstop, below of=integrate, yshift=-1.5cm] (end) {stop};
+	    % Draw edges
+	    \draw [arrow] (init) -- (function);
+	    \draw [arrow] (function) -- (space);
+	    \draw [arrow] (space) -- (receive);
+		\draw [arrow] (receive) -- (design);
+		\draw [arrow] (design) -- (system);
+		\draw [arrow] (system) -- (testing);
+	    \draw [arrow] (testing) -- node {yes} (integrate);
+	    \draw [arrow] (testing) -- node {no}(system);
+	    \draw [arrow] (integrate) -- node {yes} (end);
+	    \draw [arrow] (integrate) -- node {no}(system);
+	\end{tikzpicture}
 \end{center}
 \caption{Research flow diagram}
 \label{fig:flowDiagram}
@@ -453,12 +491,12 @@ capture image immediately after moving a small and appropriate distance
 and send to cloud server.
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
-\end{center}
-\caption{System flow chart}
-\label{fig:flowChart}
+	\centering
+		\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
+		\caption{System flow chart}
+		\label{fig:system}
 \end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementataion}\label{sec:implementation}
