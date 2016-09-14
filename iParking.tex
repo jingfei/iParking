@@ -440,11 +440,11 @@ text width=3cm,  draw=black, fill=blue!30]
 	    \draw [arrow] (space) -- (receive);
 		\draw [arrow] (receive) -- (design);
 		\draw [arrow] (design) -- (system);
-		\draw [arrow] (system) -- (testing);
-	    \draw [arrow] (testing) -- node {yes} (integrate);
-	    \draw [arrow] (testing) -- node {no}(system);
-	    \draw [arrow] (integrate) -- node {yes} (end);
-	    \draw [arrow] (integrate) -- node {no}(system);
+		\draw [arrow] (system.110) -- (testing.-96);
+	    \draw [arrow] (testing) -- node [anchor=north] {yes} (integrate);
+	    \draw [arrow] (testing.-85) -- node [anchor=west] {no}(system.70);
+	    \draw [arrow] (integrate) -- node [anchor=west] {yes} (end);
+	    \draw [arrow] (integrate) -- node [anchor=north] {no}(system);
 	\end{tikzpicture}
 \end{center}
 \caption{Research flow diagram}
@@ -671,34 +671,57 @@ can get the correct information immediately.
 
 \subsection{Conclusion}
 
-本系統之目的是希望透過我們的停車查詢系統，能提供使用者一個實用又好操作的應用程式，使其有路邊停車需求時能快速找到停車位，降低查找車位時所造成的交通問題、空氣污染問題與違規停車的機率。
+The goal of this system is to offer users a practical and useful
+application. Users are able to find parking spaces while having
+requests. In addition, traffic problem, air pollution problem, and the
+behavior of illigal parking will decrease.
 
-目前已經有一個簡單卻完整的系統，包含了遠端伺服器、伺服器中內建的影像分析技
-術，以及 Android 手機 APP 可以供使用者實際使用，對於未來，除了希望能在
-iPhone 和 Windows phone
-所搭載的作業系統開發相同的手機應用程式外，我們更希望能再針對影像
-辨識準確率、壓力測試、車載網路這三大方向進行努力。 
+We have a simple but completed system until now. The system includes
+cloud server, the technique to analyze images, and an application for
+Android. We expect to develop more applications on iPhone and Windows
+Phone. Besides, we look forward to doing more research on accuracy of
+image recognition, server load balance, and Vehicular ad hoc network.
 
 \subsection{Future Work}
 
-\subsubsection{影像辨識準確率}
+\subsubsection{Accuracy of image recognition}
 
-目前影像辨識準確率因受環境因素影像`在夜晚、雨天，甚至天氣偏陰暗時會有偏高的錯誤率。對於天氣陰暗這點，理論上可以用不同的環境變數去克服，只是得讓系統得以事先得知當時的天氣狀況，自行判斷該用哪組環境變數。目前想到的可行方案為以當天氣象局所公布的氣象資訊作為參考依準。
+The system will be affected by environment, for example, its error rate
+is on the high side at night or in the raining day. Theoretically, it
+can use different environmental variable to get over the situation like
+dark cloudy day. The difficulty is that the system needs to know weather
+condition in advanced in order to choose which environmental variable is
+appropriate. The initial idea is based on information from area's
+weather bureau.
 
-至於夜晚和雨天，就得直接從演算法的部分著手，夜晚或許可以先將影像整體對比度及亮度調高，使得畫面中的停車格線和停車格中的車輛能夠明顯到足以辨識的程度，才有辦法做進一步的分析;雨天則得先去掉雨滴所造成的影像雜訊與克服影像模糊的部分。對於這兩種狀況目前仍在研讀他人論文，思考可行解決方案，相信有朝一日該系統定能克服此兩種因環境所造成的低辨識率狀況。
+As for night and raining day, it needs to modify from current algorithm.
+While it is at night, we may adjust the image to high brightness and
+contrast ratio in order to recognize parking space's line and vehicle
+in the space. While it is raning day, we need to get rid of raindrop and
+the noise in the image in order to make image clear enough to be recognized first.
 
-\subsubsection{壓力測試}
+\subsubsection{Server load test}
 
-由於目前系統尚未有多人同時使用的狀況，因此其實不確定當使用者一多時系統是否仍能負擔。針對該部分，當初是希望能先將系統修改至更加完善後，再推出給親朋好友試用，一邊希望他們能夠給些回饋讓系統更加穩定，另一方面也可以做壓力負載的測試，確認現在伺服器是否能夠支持使用該系統的用戶皆能正常使用。
+Because the system has not confront the condition for multiple people to
+use, we are not sure that how much load it can support. We will spend
+more time finding more people to try it. Therefore, we can do both load
+testing and make it stable by testers' feedback.
 
-\subsubsection{車載網路}
+\subsubsection{Vehicular ad hoc networks (VANETs)}
 
-車載網路是一種透過隨意網路提供車輛之間的通訊，藉由無線通訊與資料傳遞技術，串聯交通工具以及路邊交通設施，所形成的特殊的專用網路，屬於高度客制化的行動式隨意網路，且比起一般隨意網路
-(Ad Hoc)，車載網路擁有相對較高的速度\cite{AdHoc}。現今車載網路之應用範疇多為智慧型運輸系統 (Intelligent
-Transportation System, ITS
-)，其九大服務項目中包含安全性應用、交通管理與環境資訊與便利生活訊息傳送幾大範圍。
+Vehicular ad hoc networks is a communication between vehicles through ad
+hoc network. It is a special network which connects transportation and transit facilities by the
+road. In comparison with ordinary ad hoc networks, vehicular ad hoc
+network can easily be custiomized, and it has relatively higher
+transmission speed \cite{AdHoc}. Most of VANETs is used in Intelligent
+Transportation System (ITS) nowadays. Its nine main projects include
+security, transportation management, environmental information, and
+transmission of daily message.
 
-希望當未來 VANET 技術在台灣發展更加成熟時，本系統可以透過車載網路，讓用戶端的車輛彼此間得以直接進行溝通，使得同一時段內，同一相近車輛群中，只會有一台車輛負責上傳行車記錄影像，避免停車位計數錯誤與影像重複分析所造成的額外負擔。
+We hope that while the technique becomes mature in the future, the
+system can make vehicles communicate by VANETs directly. It will reduce
+the load for repeating analysis because only one vehicle will do
+analysis in the same group of vehicles at the same time section.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
