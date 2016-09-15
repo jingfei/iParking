@@ -143,7 +143,7 @@ pdfstartview=Fit
 Chia-Ying Lin \and Meng-Hsun Tsai \and Hui-Ling Chang}
 %If there are too many authors, use \authorrunning
 \authorrunning{Ching-Fei Yang et al.}
-\institute{Computer Science, National Cheng Kung University}
+\institute{Department of Computer Science, National Cheng Kung University}
 
 \maketitle
 
@@ -200,7 +200,7 @@ conclusion, discuss more about future work.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Related work}\label{sec:relatedWork}
+\section{Related Work}\label{sec:relatedWork}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %
@@ -465,18 +465,18 @@ before sending to cloud server.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Implementataion}\label{sec:implementation}
+\section{Implementation}\label{sec:implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The system is divided into three parts - image recongization, cloud
 server, and client's application. At first, the three parts will be implemented
-seaprately. They will be combined and operate after they all make a certain proportain.
+separately. They will be combined and operate after they all make a certain proportain.
 
 \subsection{Image recognition of roadside parking space}
 
-Image recoginition and analysis of roadside parking space is implemented by C++ with
+Image recognition and analysis of roadside parking space is implemented by C++ with
 OpenCV library. The program will return if the image of parking space is
-vacant after recieved an image.
+vacant after received an image.
 
 \subsubsection{Setting ROI (Region of Interest)}
 
@@ -498,10 +498,10 @@ usually located in the right hand side.
 	\label{fig:ROI}
 \end{figure}
 
-\subsubsection{Sides detection and Noice reduction on Image} 
+\subsubsection{Sides detection and Noise reduction on Image} 
 
 The program uses Canny edge detection in OpenCV to find each side of
-parking space. Afterward it reduces noice by the way, Median Blur.
+parking space. Afterward it reduces noise by the way, Median Blur.
 (\Cref{sideDetecting})
 
 \begin{figure}
@@ -560,11 +560,11 @@ able to know which road sections do not have spaces, prevent analyze the
 images from those sections. We implement the server by nodejs action
 hero framework; In addition to offering API with http, we will provide
 interface for webpages in order to let users find parking spaces
-directly. Non-relational database, Mongo, is also used to accerlate
+directly. Non-relational database, Mongo, is also used to accelerate
 access and operated speed. 
 
 Cloud server will translate longitude and latitude into address
-information while recieving GPS information and images by users. Next,
+information while receiving GPS information and images by users. Next,
 it will compare the road section with open data to confirm if the
 section provides parking spaces. After successful analysis, the result
 with address will update to database for other users.
@@ -617,9 +617,9 @@ uploading the record, it will be deleted. \Cref{fig:userSetting}
 is the setting page. Users can change their sending rate (network flow)
 and searching range while finding parking space.
 \Cref{fig:userResult} is the result of searching. Users will know 
-how many parking spaces nearbyAfter choosing the one user prefers, 
+how many parking spaces nearby. After choosing the one user prefers, 
 the location will be shown on the map like \Cref{fig:userMap}.
-Therefore, user can be navigated to the space combined with Google api.
+Therefore, user can be navigated to the space combined with Google API.
 
 \subsection{Testing}
 
@@ -641,7 +641,7 @@ can get the correct information immediately.
 The goal of this system is to offer users a practical and useful
 application. Users are able to find parking spaces while having
 requests. In addition, traffic problem, air pollution problem, and the
-behavior of illigal parking will decrease.
+behavior of illegal parking will decrease.
 
 We have a simple but completed system until now. The system includes
 cloud server, the technique to analyze images, and an application for
@@ -649,14 +649,14 @@ Android. We expect to develop more applications on iPhone and Windows
 Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
 
-\subsection{Future Work}
+\subsection{Future work}
 
 \subsubsection{Accuracy of image recognition}
 
 The system will be affected by environment, for example, its error rate
 is on the high side at night or in the raining day. Theoretically, it
 can use different environmental variable to get over the situation like
-dark cloudy day. The difficulty is that the system needs to know weather
+dark cloudy day. The difficulty is that the system needs to know the weather
 condition in advanced in order to choose which environmental variable is
 appropriate. The initial idea is based on information from area's
 weather bureau.
@@ -664,12 +664,12 @@ weather bureau.
 As for night and raining day, it needs to modify from current algorithm.
 While it is at night, we may adjust the image to high brightness and
 contrast ratio in order to recognize parking space's line and vehicle
-in the space. While it is raning day, we need to get rid of raindrop and
+in the space. While it is raining day, we need to get rid of raindrop and
 the noise in the image in order to make image clear enough to be recognized first.
 
 \subsubsection{Server load test}
 
-Because the system has not confront the condition for multiple people to
+Because the system has not confronted the condition for multiple people to
 use, we are not sure that how much load it can support. We will spend
 more time finding more people to try it. Therefore, we can do both load
 testing and make it stable by testers' feedback.
@@ -679,7 +679,7 @@ testing and make it stable by testers' feedback.
 Vehicular ad hoc networks is a communication between vehicles through ad
 hoc network. It is a special network which connects transportation and transit facilities by the
 road. In comparison with ordinary ad hoc networks, vehicular ad hoc
-network can easily be custiomized; Besides, it has relatively higher
+network can easily be customized; Besides, it has relatively higher
 transmission speed \cite{AdHoc}. Most of VANETs is used in Intelligent
 Transportation System (ITS) nowadays. Its nine main projects include
 security, transportation management, environmental information, and
