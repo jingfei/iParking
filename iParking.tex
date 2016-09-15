@@ -140,15 +140,19 @@ pdfstartview=Fit
 
 %Single insitute
 \author{Ching-Fei Yang \and You-Huei Ju \and Chung-Ying Hsieh \and
-Chia-Ying Lin \and Meng-Hsun Tsai \and Hui-Ling Chang}
+Chia-Ying Lin \and \\ Meng-Hsun Tsai \and Hui-Ling Chang}
 %If there are too many authors, use \authorrunning
 \authorrunning{Ching-Fei Yang et al.}
-\institute{Department of Computer Science, National Cheng Kung University}
+\institute{
+	Department of Computer Science and Information Engineering,\\ 
+	National Cheng Kung University,\\
+	\email{e84016184@mail.ncku.edu.tw}
+}
 
 \maketitle
 
 \begin{abstract}
-By the popularization of cars, number of vehicles owned by each person
+By the popularization of cars, average number of vehicles owned by one person
 grows with passing days. However, the number of parking areas is out of
 proportion. In order to satisfy the requirements of parking space and
 reduce illegal parking, we propose iParking, a real-time parking space
@@ -182,7 +186,7 @@ themselves while roadside parking spaces are not enough. The situation
 will bring out arbitrary parking, and it is also the main reason of
 illegal parking. 
 
-Recently, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
+Over the last few years, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
 the appearance of smartphones. LBS can apply broadly to different area
 like health, job, daily life, and etc. Thus, how to use LBS to help
 different users find the appropriate parking space is vital. The usage
@@ -213,7 +217,7 @@ of the important indicators in addition to the number of vehicles.
 \Cref{fig:StatisticalTable} is the comparison chart between the number of vehicles and
 parking spaces from 2006 to 2014 in Taiwan.
 
-\begin{figure}
+\begin{figure}[tbp]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{Figures/Statistical_Table.png}
 \end{center}
@@ -294,7 +298,7 @@ and storage virtualization technique.
 
 In order to improve the efficiency of driving records, and reduce the
 capacity of mobile device. We will refer to existing cloud storage
-service, analyzing data through cloud server, and send the parking
+service, analyzing data through servers in cloud, and send the parking
 information to users who have request.
 
 %
@@ -375,7 +379,7 @@ to plan the structure of program; Then, begin to develop the program,
 add GUI, do simulation, and test system. Finally, analyze and present
 whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
 
-\begin{figure}
+\begin{figure}[tbp]
 \begin{center}
 	% Define block styles
 	\tikzstyle{startstop} = [rectangle, rounded corners, minimum
@@ -418,10 +422,10 @@ text width=3cm,  draw=black, fill=blue!30]
 \end{figure}
 
 %
-\subsubsection{Building cloud server and algorithm design}
+\subsubsection{Building cloud service and algorithm design}
 %
 
-The main usage of cloud server is to implement each operated function,
+The main usage of cloud service is to implement each operated function,
 handle users' request, and provide storage to save driving records. The
 operated function includes receiving image data from users, analyzing
 images, building database, searching database, and etc. Hold time is the
@@ -437,7 +441,7 @@ are analyzing real-time image in every data.
 
 We will plan our service with relation to different characters. For
 example, it is necessary for users to search nearby parking space, it is
-required for devices to send image information to cloud server, and it
+required for devices to send image information to servers in cloud, and it
 is important for servers to analyze and collect data. As for UI design
 in app, in order to realize convenient searching function and interface,
 it need to be designed from the view of users.
@@ -454,9 +458,9 @@ sending the same information of specific location at the same time or
 not. It will not send information if anyone else is sending the data.
 However, if there is not anyone else sending the data, we plan to
 capture image immediately after moving a small and appropriate distance
-before sending to cloud server.
+before sending to servers in cloud.
 
-\begin{figure}
+\begin{figure}[tbp]
 	\centering
 		\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
 		\caption{System flow chart}
@@ -486,11 +490,11 @@ recognition. Moreover, the image will be divided into four equal parts.
 Only the right-bottom part will be reserved because the spaces are
 usually located in the right hand side.
 
-\begin{figure}
+\begin{figure}[tbp]
 	\subfigure[Gray scale image] {
 		\includegraphics[scale=0.8]{Figures/grayScaleImage.png}
 	}
-	\hspace{0.5in}
+	\hspace{0.2in}
 	\subfigure[ROI image] {
 		\includegraphics[scale=0.8]{Figures/ROIImage.png}
 	}
@@ -504,7 +508,7 @@ The program uses Canny edge detection in OpenCV to find each side of
 parking space. Afterward it reduces noise by the way, Median Blur.
 (\Cref{sideDetecting})
 
-\begin{figure}
+\begin{figure}[tbp]
 	\begin{minipage}{.4\textwidth}
 		\centering
 		\includegraphics[scale=0.7]{Figures/sideDetecting.png}
@@ -538,7 +542,7 @@ than a certain number, it means that the space has been occupied.
 Therefore, the program will return no vacant spaces. On the contrary, 
 it will return there is a vacant parking space.
 
-\begin{figure}
+\begin{figure}[tbp]
 	\subfigure[Available parking space] {
 		\includegraphics[scale=0.7]{Figures/availableParkingSpace.png}
 	}
@@ -553,7 +557,7 @@ it will return there is a vacant parking space.
 \subsection{Cloud analyzing server}
 
 After passing image recognition of roadside parking space testing, the
-program mentioned above will be moved to cloud server. Moreover, it will
+program mentioned above will be moved to cloud service. Moreover, it will
 coordinate with the open data offered by government. The data will
 provide the information about roadside parking space. Therefore, we are
 able to know which road sections do not have spaces, prevent analyze the
@@ -563,7 +567,7 @@ interface for webpages in order to let users find parking spaces
 directly. Non-relational database, Mongo, is also used to accelerate
 access and operated speed. 
 
-Cloud server will translate longitude and latitude into address
+Servers in cloud will translate longitude and latitude into address
 information while receiving GPS information and images by users. Next,
 it will compare the road section with open data to confirm if the
 section provides parking spaces. After successful analysis, the result
@@ -577,7 +581,7 @@ Android Studio and Android SDK, which are based on JAVA, to develop
 client's application.
 
 
-\begin{figure}
+\begin{figure}[tbp]
 	\subfigure[Home] {
 		\includegraphics[scale=0.3]{Figures/userHome.png}
 		\label{fig:userHome}
@@ -627,7 +631,7 @@ In the part of testing, we will initially test client and server side
 separately, merge them with UI design. Finally, we will test
 the integrated system by the following steps. First, a single vehicle.
 That is to test with different speed, make sure that static image
-streaming is worked with cloud server. Next, test the efficiency of
+streaming is worked with cloud service. Next, test the efficiency of
 multiple vehicles. Verify that no images will be in the same
 location at the same time. The last step is to confirm that client side
 can get the correct information immediately.
@@ -644,7 +648,7 @@ requests. In addition, traffic problem, air pollution problem, and the
 behavior of illegal parking will decrease.
 
 We have a simple but completed system until now. The system includes
-cloud server, the technique to analyze images, and an application for
+cloud service, the technique to analyze images, and an application for
 Android. We expect to develop more applications on iPhone and Windows
 Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
