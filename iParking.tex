@@ -32,14 +32,6 @@ qt=false%
 %extended enumerate, such as \begin{compactenum}
 \usepackage{paralist}
 
-%put figures inside a text
-%\usepackage{picins}
-%use
-%\piccaptioninside
-%\piccaption{...}
-%\parpic[r]{\includegraphics ...}
-%Text...
-
 %Sorts the citations in the brackets
 %It also allows \cite{refa, refb}. Otherwise, the document does not compile.
 %  Error message: "White space in argument"
@@ -69,10 +61,6 @@ qt=false%
 %\def\Url@twoslashes{\mathchar`\/\@ifnextchar/{\kern-.2em}{}}
 %\g@addto@macro\UrlSpecials{\do\/{\Url@twoslashes}}
 %\makeatother
-
-%diagonal lines in a table - http://tex.stackexchange.com/questions/17745/diagonal-lines-in-table-cell
-%slashbox is not available in texlive (due to licensing) and also gives bad results. This, we use diagbox
-%\usepackage{diagbox}
 
 %required for pdfcomment later
 \usepackage{xcolor}
@@ -169,7 +157,7 @@ We lay emphasis on roadside parking. The system determines and records
 empty parking spaces through cloud computing, wireless technology
 between vehicles and image analysis. It tells you the nearest location
 of empty parking space while drivers have requests. We expect the system
-to cause attention to more people and government, and to solve relative
+to cause attention to more people and government while it solves relative
 problems about parking space. 
 \end{abstract}
 
@@ -179,37 +167,20 @@ problems about parking space.
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-According to statistics, the amount of vehicles increases yearly in
-Taiwan. People usually create chaos near parking space while taking
-plenty of time to find it. That is to say, parking problem has become
-people's harassment. It is shown from statistical data in Ministry of
+Recently, parking problem has become people's harassment. 
+It is shown from statistical data in Ministry of
 Transportation, Taiwan that the number of registered vehicles is
 7,554,319 until December 2014 \cite{motc}; However, it is also mentioned that
-the number of legal parking space is about four million in total. We can say that
-parking space is in short supply with the disparity of vehicles.
-Moreover, it will cause several problems such as the extremely slow
+the number of legal parking space is about four million in total. 
+Furthermore, it will cause several problems such as the extremely slow
 speed while finding parking space, scrambling for roads with scooters,
 parking temporarily in dangerous part, or driving U-turn illegally. The
 behavior will not only break the safety and regular of transportation
-but also make noise and consume resource.
-
-Take Tainan City, Taiwan for example \cite{strategyTainan}, high road trip rate gives rise
-to high parking demand in many areas in Tainan. Up to now, there are
-totally about 580 thousand registered cars and trucks while around
-11,000 parking spaces are planned. Furthermore, due to the unreasonable
-proportion of parking spaces (including roadside parking, off-street
-parking, and spaces attached in building), roadside parking space is not
-enough obviously. Theoretically, the number of roadside parking space is
-required to reach 20 percent. Otherwise, it will result in lack of
-parking space, spending too much time finding space, or etc.
-
+but also make noise and consume resource. 
 It is easy to observe that some vehicles need to find parking space by
 themselves while roadside parking spaces are not enough. The situation
 will bring out arbitrary parking, and it is also the main reason of
-illegal parking. In addition, according to Pollster online market survey
-\cite{Pollster}, around sixty percent of people are bothered by parking issue. Thus,
-we build this application in order to provide nearby parking space
-information to drivers immediately and reduce traffic problems.
+illegal parking. 
 
 Recently, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
 the appearance of smartphones. LBS can apply broadly to different area
@@ -221,14 +192,16 @@ is. Thus, we would like to develop a monitor and guiding system focus on
 roadside parking to provide the information of nearby parking space and
 help drivers park with the fastest way.
 
+We will introduce the system in four parts. First of all, know what is
+the demand of our work and compare with other techniques. Next, show the
+details, especially features and structure of our service. In addition,
+demonstrate how we implement and design the system. Finally, make a
+conclusion, discuss more about future work.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related work}\label{sec:relatedWork}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-According to the target of our goal, we will discuss the topic about
-``demand of parking space'', ``Transmitting and analyzing driving records'',
-and ``Comparing with existing parking space monitored technique''.
 
 %
 \subsection{Demand of parking space}
@@ -267,7 +240,45 @@ roadside parking space. Thus, to solve the problem of roadside parking
 is necessary.
 
 %
-\subsection{Transmitting and analyzing driving records}
+\subsection{Existing parking space monitored technique}
+%
+
+All of existing parking space monitored techniques are limited to
+parking lot and only supported by sensors. For instance, intelligent
+parking lot uses wireless sensor network, ZIBEE, pressure sensors
+\cite{PaymentSystem}.
+They update database by sensors to know if it is empty. The another
+instance is Eco-Community plan developed by several schools
+\cite{EcoCommunity}. Its
+main method is using the sensitivity of the sensor, Octopus II,
+updating changes to database. Therefore, the changes will tell users
+information about parking spaces. However, the two techniques have a big
+constraint when it comes to downtown area. It is a huge challenge to set
+up sensors for all parking spaces in downtown due to the fee of building
+and maintenance. That is to say, both of them are not suitable to
+roadside parking in comparison with our system.
+
+As regards other apps in the market, they are connected to nearby
+parking lot, offering real-time information. However, only few of
+them mention payment information about roadside parking. In conclusion,
+none of the apps in the market provide function to find roadside parking
+spaces until now.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Service and System Structure}\label{sec:service}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\subsection{Software platform}
+%
+
+We choose smartphone and related device to complete mobility, driving
+recorder, and Network communication by reason of the target users,
+people with mobile vehicle. We build the application base on Android,
+using Java to implement code structure and GUI design.
+
+%
+\subsection{Features}
 %
 
 %
@@ -296,7 +307,7 @@ Internet. By the technique, media data are able to watch without
 downloading whole media. Therefore, it is called ``streaming'' because
 data in the process behaves like running water.
 
-We can say that static image streaming is to connect images, and to
+We can say that static image streaming is to connect images,
 record the event over the next period of time. Under the premise that
 analyzing driving records accurately, we will use static image streaming
 to lessen the burden instead of sending whole driving record.
@@ -307,52 +318,15 @@ to lessen the burden instead of sending whole driving record.
 
 In the reference \cite{ParkingSpot}, the author has proposed solutions to detect if
 parking spaces are vacant. Its technique includes Hough line detection
-and Canny edge detection, and implementing by OpenCV library. The
+and Canny edge detection, implementing by OpenCV library. The
 original method has two limitations. The first one is that it can only
 identify one photo at a time while the another is that only the parking
 space at bottom right corner can be identified. We breakthrough them by
 using static image streaming.
 
-%
-\subsection{Existing parking space monitored technique}
-%
-
-All of existing parking space monitored techniques are limited to
-parking lot and only supported by sensors. For instance, intelligent
-parking lot uses wireless sensor network, ZIBEE, pressure sensors
-\cite{PaymentSystem}.
-They update database by sensors and knowing if it is empty. The another
-instance is Eco-Community plan developed by several schools
-\cite{EcoCommunity}. Its
-main method is using the sensitivity of the sensor, Octopus II, and
-update changes to database. Therefore, the changes will tell users
-information about parking spaces. However, the two techniques have a big
-constraint when it comes to downtown area. It is a huge challenge to set
-up sensors for all parking spaces in downtown due to the fee of building
-and maintenance. That is to say, both of them are not suitable to
-roadside parking in comparison with our system.
-
-As regards other apps in the market, they are connected to nearby
-parking lot, and offering real-time information. However, only few of
-them mention payment information about roadside parking. In conclusion,
-none of the apps in the market provide function to find roadside parking
-spaces until now.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Service and System Structure}\label{sec:service}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %
-\subsection{Software platform}
-%
-
-We choose smartphone and related device to complete mobility, driving
-recorder, and Network communication by reason of the target users,
-people with mobile vehicle. We build the application base on Android,
-and using Java to implement code structure and GUI design.
-
-%
-\subsection{Features and efficacy}
+\subsection{Efficacy}
 %
 
 %
@@ -391,12 +365,12 @@ and the time of data transmission can be saved.
 
 We mainly focus on car owners. Besides, we will use our own approach to
 detect driving record automatically and communicate between vehicles.
-The application is built on Android, and expected to run the program on
+The application is built on Android, expected to run the program on
 driving recorders. We will limit to a specific road section while
 testing and developing the system.
 
 Four steps are supposed to proceed. First, determine the specific road
-section, and collect data; Next, sort out the collected data, and start
+section, and collect data; Next, sort out the collected data. Start
 to plan the structure of program; Then, begin to develop the program,
 add GUI, do simulation, and test system. Finally, analyze and present
 whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
@@ -468,9 +442,9 @@ is important for servers to analyze and collect data. As for UI design
 in app, in order to realize convenient searching function and interface,
 it need to be designed from the view of users.
 
-The error of GPS measurement is about 5 to 10 meters, and we can say
+The error of GPS measurement is about 5 to 10 meters. We can say
 that it is about 1 or 2 roadside parking spaces. In order to enhance the
-accuracy, we will combine Google Maps API, and take the advantage of its
+accuracy, we will combine Google Maps API, take the advantage of its
 navigation and distance matrix service. Besides accessing the speed and
 distance of vehicles, the API can also help send GPS location to keep
 loading and operating fast in the device.
@@ -480,7 +454,7 @@ sending the same information of specific location at the same time or
 not. It will not send information if anyone else is sending the data.
 However, if there is not anyone else sending the data, we plan to
 capture image immediately after moving a small and appropriate distance
-and send to cloud server.
+before sending to cloud server.
 
 \begin{figure}
 	\centering
@@ -548,7 +522,7 @@ parking space. Afterward it reduces noice by the way, Median Blur.
 
 \subsubsection{Find out parking spaces}
 
-First, find out straight line with Hough line detection, and detect
+First, find out straight line with Hough line detection. Detect
 which one is the line of parking space by angle and intersection of
 lines. (\Cref{drawParkingSpace})
 
@@ -560,9 +534,9 @@ able to use.
 \subsubsection{Detect if the parking space is able to use}
 
 If the ratio between the side of parking space and its shelter is more
-than a certain number, it means that the space has been occupied and the
-program will return no vacant spaces. On the contrary, it will return
-there is a vacant parking space.
+than a certain number, it means that the space has been occupied.
+Therefore, the program will return no vacant spaces. On the contrary, 
+it will return there is a vacant parking space.
 
 \begin{figure}
 	\subfigure[Available parking space] {
@@ -597,10 +571,10 @@ with address will update to database for other users.
 
 \subsection{Mobile APP (client side)}
 
-It is divided into several steps to implement, and mainly separated into
+It is divided into several steps to implement, mainly separated into
 user (device) and server side. First, we use Android platform with
 Android Studio and Android SDK, which are based on JAVA, to develop
-client’s application.
+client's application.
 
 
 \begin{figure}
@@ -636,24 +610,25 @@ client’s application.
 \Cref{fig:userHome} is the first screen of the system. You
 can choose the function of both recording and searching.
 \Cref{fig:userRecord} is recording screen. It will use device's
-camera automatically, and temporarily save the records in iParking
-folder in order to let users check the
-record, and choose if they want to provide it to other users or delete it. After
+camera automatically, temporarily save the records in iParking
+folder. The purpose is to let users check the
+record, choose if they want to provide it to other users or delete it. After
 uploading the record, it will be deleted. \Cref{fig:userSetting}
 is the setting page. Users can change their sending rate (network flow)
 and searching range while finding parking space.
-\Cref{fig:userResult} and \Cref{fig:userMap} are both the part of searching
-parking spaces. Users will know how many parking spaces nearby and
-they can be navigated to the nearest space combined with Google api.
+\Cref{fig:userResult} is the result of searching. Users will know 
+how many parking spaces nearbyAfter choosing the one user prefers, 
+the location will be shown on the map like \Cref{fig:userMap}.
+Therefore, user can be navigated to the space combined with Google api.
 
 \subsection{Testing}
 
 In the part of testing, we will initially test client and server side
-separately, and then merge them with UI design. Finally, we will test
+separately, merge them with UI design. Finally, we will test
 the integrated system by the following steps. First, a single vehicle.
-That is to test with different speed, and make sure that static image
+That is to test with different speed, make sure that static image
 streaming is worked with cloud server. Next, test the efficiency of
-multiple vehicles, and verify that no images will be in the same
+multiple vehicles. Verify that no images will be in the same
 location at the same time. The last step is to confirm that client side
 can get the correct information immediately.
 
@@ -704,7 +679,7 @@ testing and make it stable by testers' feedback.
 Vehicular ad hoc networks is a communication between vehicles through ad
 hoc network. It is a special network which connects transportation and transit facilities by the
 road. In comparison with ordinary ad hoc networks, vehicular ad hoc
-network can easily be custiomized, and it has relatively higher
+network can easily be custiomized; Besides, it has relatively higher
 transmission speed \cite{AdHoc}. Most of VANETs is used in Intelligent
 Transportation System (ITS) nowadays. Its nine main projects include
 security, transportation management, environmental information, and
