@@ -1,9 +1,6 @@
-#The output should not be versioned
-iParking.pdf
 
 #example
 paper.*
-README.md
 
 #temporary files by gradle
 .gradle
