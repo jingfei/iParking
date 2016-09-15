@@ -5,9 +5,6 @@
 %Even if the title page states the title, when printed and stored in a folder, when blindly opening the folder, one could hit not the title page, but an arbitrary page. Therefore, it is good to have title printed on the pages, too.
 \documentclass[runningheads,a4paper]{llncs}
 
-% use chinese
-\usepackage{CJKutf8}
-
 % use subpackage
 \usepackage{subfigure}
 
@@ -140,7 +137,6 @@ pdfstartview=Fit
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 \begin{document}
-\begin{CJK}{UTF8}{bsmi}
 
 %Works on MiKTeX only
 %hint by http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
@@ -169,7 +165,6 @@ grows with passing days. However, the number of parking areas is out of
 proportion. In order to satisfy the requirements of parking space and
 reduce illegal parking, we propose iParking, a real-time parking space
 monitoring and guiding system, in this paper. 
-
 We lay emphasis on roadside parking. The system determines and records
 empty parking spaces through cloud computing, wireless technology
 between vehicles and image analysis. It tells you the nearest location
@@ -184,9 +179,6 @@ problems about parking space.
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%
-\subsection{Research motivation}
-%
 According to statistics, the amount of vehicles increases yearly in
 Taiwan. People usually create chaos near parking space while taking
 plenty of time to find it. That is to say, parking problem has become
@@ -732,5 +724,4 @@ analysis in the same group of vehicles at the same time section.
 All links were last followed on September 11, 2016.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{CJK}
 \end{document}
