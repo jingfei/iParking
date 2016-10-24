@@ -1,0 +1,19 @@
+# Created by https://www.gitignore.io/api/tex
+
+### TeX ###
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+
+*.upa
+*.upb
+*.bbl
+*.blg
+*.fdb_latexmk
+*.synctex
