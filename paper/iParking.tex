@@ -217,15 +217,6 @@ of the important indicators in addition to the number of vehicles.
 \Cref{fig:StatisticalTable} is the comparison chart between the number of vehicles and
 parking spaces from 2006 to 2014 in Taiwan.
 
-\begin{figure}[tbp]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{Figures/Statistical_Table.png}
-\end{center}
-\caption{Statistical table of vehicles and parking spaces' number from
-2006 to 2014}
-\label{fig:StatisticalTable}
-\end{figure}
-
 It is shown from \Cref{fig:StatisticalTable} that the difference between supply and demand
 of parking space is about two million. In addition, it is pointed out
 from trend of line that the growth rate of vehicles and parking spaces
@@ -307,7 +298,7 @@ information to users who have request.
 
 Streaming media is a process to compress a series of media data, send
 through network section, and offer real-time media service on the
-Internet. By the technique, media data are able to watch without
+Internet \cite{IOV2014}. By the technique, media data are able to watch without
 downloading whole media. Therefore, it is called ``streaming'' because
 data in the process behaves like running water.
 
@@ -637,10 +628,8 @@ location at the same time. The last step is to confirm that client side
 can get the correct information immediately.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion and Future Work}\label{sec:conclusion}
+\section{Conclusion}\label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Conclusion}
 
 The goal of this system is to offer users a practical and useful
 application. Users are able to find parking spaces while having
@@ -652,47 +641,6 @@ cloud service, the technique to analyze images, and an application for
 Android. We expect to develop more applications on iPhone and Windows
 Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
-
-\subsection{Future work}
-
-\subsubsection{Accuracy of image recognition}
-
-The system will be affected by environment, for example, its error rate
-is on the high side at night or in the raining day. Theoretically, it
-can use different environmental variable to get over the situation like
-dark cloudy day. The difficulty is that the system needs to know the weather
-condition in advanced in order to choose which environmental variable is
-appropriate. The initial idea is based on information from area's
-weather bureau.
-
-As for night and raining day, it needs to modify from current algorithm.
-While it is at night, we may adjust the image to high brightness and
-contrast ratio in order to recognize parking space's line and vehicle
-in the space. While it is raining day, we need to get rid of raindrop and
-the noise in the image in order to make image clear enough to be recognized first.
-
-\subsubsection{Server load test}
-
-Because the system has not confronted the condition for multiple people to
-use, we are not sure that how much load it can support. We will spend
-more time finding more people to try it. Therefore, we can do both load
-testing and make it stable by testers' feedback.
-
-\subsubsection{Vehicular ad hoc networks (VANETs)}
-
-Vehicular ad hoc networks is a communication between vehicles through ad
-hoc network. It is a special network which connects transportation and transit facilities by the
-road. In comparison with ordinary ad hoc networks, vehicular ad hoc
-network can easily be customized; Besides, it has relatively higher
-transmission speed \cite{AdHoc}. Most of VANETs is used in Intelligent
-Transportation System (ITS) nowadays \cite{IOV2014}. Its nine main projects include
-security, transportation management, environmental information, and
-transmission of daily message.
-
-We hope that while the technique becomes mature in the future, the
-system can make vehicles communicate by VANETs directly. It will reduce
-the load for repeating analysis because only one vehicle will do
-analysis in the same group of vehicles at the same time section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgement}\label{sec:ack}
