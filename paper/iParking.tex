@@ -27,7 +27,7 @@ qt=false%
 %if more space is needed, exchange cfr-lm by mathptmx
 %\usepackage{mathptmx}
 
-\usepackage{graphicx}
+%\usepackage{graphicx}
 
 %extended enumerate, such as \begin{compactenum}
 \usepackage{paralist}
@@ -409,7 +409,7 @@ before sending to servers in cloud.
 
 \begin{figure}[tbp]
 	\centering
-		\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
+		\includegraphics[width=0.8\textwidth,natwidth=1053,natheight=482]{Figures/flowChart.png}
 		\caption{System flow chart}
 		\label{fig:system}
 \end{figure}
@@ -439,11 +439,11 @@ usually located in the right hand side.
 
 \begin{figure}[tbp]
 	\subfigure[Gray scale image] {
-		\includegraphics[scale=0.8]{Figures/grayScaleImage.png}
+		\includegraphics[scale=0.8,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
 	}
 	\hspace{0.2in}
 	\subfigure[ROI image] {
-		\includegraphics[scale=0.8]{Figures/ROIImage.png}
+		\includegraphics[scale=0.8,natwidth=405,natheight=216]{Figures/ROIImage.png}
 	}
 	\caption{Setting ROI}
 	\label{fig:ROI}
@@ -458,14 +458,14 @@ parking space. Afterward it reduces noise by the way, Median Blur.
 \begin{figure}[tbp]
 	\begin{minipage}{.4\textwidth}
 		\centering
-		\includegraphics[scale=0.7]{Figures/sideDetecting.png}
+		\includegraphics[scale=0.7,natwidth=444,natheight=236]{Figures/sideDetecting.png}
 		\caption{Detect each side}
 		\label{sideDetecting}
 	\end{minipage}
 	\hspace{0.5in}
 	\begin{minipage}{.4\textwidth}
 		\centering
-		\includegraphics[scale=0.7]{Figures/drawParkingSpace.png}
+		\includegraphics[scale=0.7,natwidth=444,natheight=237]{Figures/drawParkingSpace.png}
 		\caption{Draw parking space}
 		\label{drawParkingSpace}
 	\end{minipage}
@@ -491,11 +491,11 @@ it will return there is a vacant parking space.
 
 \begin{figure}[tbp]
 	\subfigure[Available parking space] {
-		\includegraphics[scale=0.7]{Figures/availableParkingSpace.png}
+		\includegraphics[scale=0.7,natwidth=421,natheight=266]{Figures/availableParkingSpace.png}
 	}
 	\hspace{0.5in}
 	\subfigure[Unavailable parking space] {
-		\includegraphics[scale=0.7]{Figures/unavailableParkingSpace.png}
+		\includegraphics[scale=0.7,natwidth=421,natheight=266]{Figures/unavailableParkingSpace.png}
 	}
 	\caption{Detect parking space}
 	\label{detectingParkingspace}
@@ -530,27 +530,27 @@ client's application.
 
 \begin{figure}[tbp]
 	\subfigure[Home] {
-		\includegraphics[scale=0.3]{Figures/userHome.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userHome.png}
 		\label{fig:userHome}
 	}
 	\hspace{0.1in}
 	\subfigure[Record] {
-		\includegraphics[scale=0.3]{Figures/userRecord.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userRecord.png}
 		\label{fig:userRecord}
 	}
 	\hspace{0.1in}
 	\subfigure[Setting] {
-		\includegraphics[scale=0.3]{Figures/userSetting.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userSetting.png}
 		\label{fig:userSetting}
 	}
 	\hspace{0.1in}
 	\subfigure[Result] {
-		\includegraphics[scale=0.3]{Figures/userResult.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userResult.png}
 		\label{fig:userResult}
 	}
 	\hspace{0.1in}
 	\subfigure[Map] {
-		\includegraphics[scale=0.3]{Figures/userMap.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userMap.png}
 		\label{fig:userMap}
 	}
 	\caption{User interface}
