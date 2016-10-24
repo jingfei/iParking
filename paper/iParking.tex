@@ -366,49 +366,7 @@ Four steps are supposed to proceed. First, determine the specific road
 section, and collect data; Next, sort out the collected data. Start
 to plan the structure of program; Then, begin to develop the program,
 add GUI, do simulation, and test system. Finally, analyze and present
-whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
-
-\begin{figure}[tbp]
-\begin{center}
-	% Define block styles
-	\tikzstyle{startstop} = [rectangle, rounded corners, minimum
-width=3cm, minimum height=1cm,text centered, text width=3cm, draw=black, fill=red!30]
-	\tikzstyle{process} = [rectangle, minimum width=3cm, minimum
-height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
-	\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm,
-text centered, text width=3cm, draw=black, fill=green!30]
-	\tikzstyle{arrow} = [thick,->,>=stealth]
-	\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium
-right angle=110, minimum width=2cm, minimum height=1cm, text centered,
-text width=3cm,  draw=black, fill=blue!30]
-	    
-	\begin{tikzpicture}[node distance=2cm]
-	    % Place nodes
-	    \node [startstop] (init) {initialize model};
-	    \node [process, below of=init] (function) {plan for each function};
-	    \node [process, below of=function] (space) {provide space to store driving record};
-	    \node [io, below of=space] (receive) {receive users' requests};
-	    \node [process, right of=receive, xshift=2cm] (design) {design UI interface};
-	    \node [process, above of=design] (system) {implement the whole system};
-	    \node [decision, above of=system, yshift=1.5cm] (testing) {test client and server side separately};
-	    \node [decision, right of=testing, xshift=3cm] (integrate) {integrate all structures};
-		\node [startstop, below of=integrate, yshift=-1.5cm] (end) {stop};
-	    % Draw edges
-	    \draw [arrow] (init) -- (function);
-	    \draw [arrow] (function) -- (space);
-	    \draw [arrow] (space) -- (receive);
-		\draw [arrow] (receive) -- (design);
-		\draw [arrow] (design) -- (system);
-		\draw [arrow] (system.110) -- (testing.-96);
-	    \draw [arrow] (testing) -- node [anchor=north] {yes} (integrate);
-	    \draw [arrow] (testing.-85) -- node [anchor=west] {no}(system.70);
-	    \draw [arrow] (integrate) -- node [anchor=west] {yes} (end);
-	    \draw [arrow] (integrate) -- node [anchor=north] {no}(system);
-	\end{tikzpicture}
-\end{center}
-\caption{Research flow diagram}
-\label{fig:flowDiagram}
-\end{figure}
+whole the research.
 
 %
 \subsubsection{Building cloud service and algorithm design}
@@ -653,7 +611,6 @@ MOST 104-2815-C-006-029-E.
 \bibliography{iParking}
 
 
-All links were last followed on September 11, 2016.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
