@@ -144,9 +144,9 @@ Chia-Ying Lin \and \\ Meng-Hsun Tsai \and Hui-Ling Chang}
 %If there are too many authors, use \authorrunning
 \authorrunning{Ching-Fei Yang et al.}
 \institute{
-	Department of Computer Science and Information Engineering,\\ 
-	National Cheng Kung University,\\
-	\email{e84016184@mail.ncku.edu.tw}
+	Department of Computer Science and Information Engineering,\\
+	National Cheng Kung University, Tainan, Taiwan\\
+	\email{jingfei@imslab.org}
 }
 
 \maketitle
@@ -156,13 +156,13 @@ By the popularization of cars, average number of vehicles owned by one person
 grows with passing days. However, the number of parking areas is out of
 proportion. In order to satisfy the requirements of parking space and
 reduce illegal parking, we propose iParking, a real-time parking space
-monitoring and guiding system, in this paper. 
+monitoring and guiding system, in this paper.
 We lay emphasis on roadside parking. The system determines and records
 empty parking spaces through cloud computing, wireless technology
 between vehicles, and image analysis. It tells you the nearest location
 of empty parking space while drivers have requests. We expect the system
 to cause attention to more people and government while it solves relative
-problems about parking space. 
+problems about parking space.
 \end{abstract}
 
 \keywords{cloud computing, image recognition, parking space management, wireless technology}
@@ -171,20 +171,20 @@ problems about parking space.
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recently, parking problem has become people's harassment. 
+Recently, parking problem has become people's harassment.
 It is shown from statistical data in Ministry of
 Transportation, Taiwan that the number of registered vehicles is
 7,554,319 until December 2014 \cite{motc}; However, it is also mentioned that
-the number of legal parking space is about four million in total. 
+the number of legal parking space is about four million in total.
 Furthermore, it will cause several problems such as the extremely slow
 speed while finding parking space, scrambling for roads with scooters,
 parking temporarily in dangerous part, or driving U-turn illegally. The
 behavior will not only break the safety and regular of transportation
-but also make noise and consume resource. 
+but also make noise and consume resource.
 It is easy to observe that some vehicles need to find parking space by
 themselves while roadside parking spaces are not enough. The situation
 will bring out arbitrary parking, and it is also the main reason of
-illegal parking. 
+illegal parking.
 
 Over the last few years, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
 the appearance of smartphones. LBS can apply broadly to different area
@@ -307,7 +307,7 @@ information to users who have request.
 
 Streaming media is a process to compress a series of media data, send
 through network section, and offer real-time media service on the
-Internet. By the technique, media data are able to watch without
+Internet \cite{IOV2014}. By the technique, media data are able to watch without
 downloading whole media. Therefore, it is called ``streaming'' because
 data in the process behaves like running water.
 
@@ -392,7 +392,7 @@ text centered, text width=3cm, draw=black, fill=green!30]
 	\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium
 right angle=110, minimum width=2cm, minimum height=1cm, text centered,
 text width=3cm,  draw=black, fill=blue!30]
-	    
+
 	\begin{tikzpicture}[node distance=2cm]
 	    % Place nodes
 	    \node [startstop] (init) {initialize model};
@@ -462,7 +462,7 @@ before sending to servers in cloud.
 
 \begin{figure}[tbp]
 	\centering
-		\includegraphics[width=0.8\textwidth]{Figures/flowChart.png}
+		\includegraphics[width=0.8\textwidth,natwidth=1053,natheight=482]{Figures/flowChart.png}
 		\caption{System flow chart}
 		\label{fig:system}
 \end{figure}
@@ -492,17 +492,17 @@ usually located in the right hand side.
 
 \begin{figure}[tbp]
 	\subfigure[Gray scale image] {
-		\includegraphics[scale=0.8]{Figures/grayScaleImage.png}
+		\includegraphics[scale=0.8,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
 	}
 	\hspace{0.2in}
 	\subfigure[ROI image] {
-		\includegraphics[scale=0.8]{Figures/ROIImage.png}
+		\includegraphics[scale=0.8,natwidth=405,natheight=216]{Figures/ROIImage.png}
 	}
 	\caption{Setting ROI}
 	\label{fig:ROI}
 \end{figure}
 
-\subsubsection{Sides detection and Noise reduction on Image} 
+\subsubsection{Sides detection and Noise reduction on Image}
 
 The program uses Canny edge detection in OpenCV to find each side of
 parking space. Afterward it reduces noise by the way, Median Blur.
@@ -511,14 +511,14 @@ parking space. Afterward it reduces noise by the way, Median Blur.
 \begin{figure}[tbp]
 	\begin{minipage}{.4\textwidth}
 		\centering
-		\includegraphics[scale=0.7]{Figures/sideDetecting.png}
+		\includegraphics[scale=0.7,natwidth=444,natheight=236]{Figures/sideDetecting.png}
 		\caption{Detect each side}
 		\label{sideDetecting}
 	\end{minipage}
 	\hspace{0.5in}
 	\begin{minipage}{.4\textwidth}
 		\centering
-		\includegraphics[scale=0.7]{Figures/drawParkingSpace.png}
+		\includegraphics[scale=0.7,natwidth=444,natheight=237]{Figures/drawParkingSpace.png}
 		\caption{Draw parking space}
 		\label{drawParkingSpace}
 	\end{minipage}
@@ -539,20 +539,8 @@ able to use.
 
 If the ratio between the side of parking space and its shelter is more
 than a certain number, it means that the space has been occupied.
-Therefore, the program will return no vacant spaces. On the contrary, 
+Therefore, the program will return no vacant spaces. On the contrary,
 it will return there is a vacant parking space.
-
-\begin{figure}[tbp]
-	\subfigure[Available parking space] {
-		\includegraphics[scale=0.7]{Figures/availableParkingSpace.png}
-	}
-	\hspace{0.5in}
-	\subfigure[Unavailable parking space] {
-		\includegraphics[scale=0.7]{Figures/unavailableParkingSpace.png}
-	}
-	\caption{Detect parking space}
-	\label{detectingParkingspace}
-\end{figure}
 
 \subsection{Cloud analyzing server}
 
@@ -565,7 +553,7 @@ images from those sections. We implement the server by nodejs action
 hero framework; In addition to offering API with http, we will provide
 interface for webpages in order to let users find parking spaces
 directly. Non-relational database, Mongo, is also used to accelerate
-access and operated speed. 
+access and operated speed.
 
 Servers in cloud will translate longitude and latitude into address
 information while receiving GPS information and images by users. Next,
@@ -583,27 +571,27 @@ client's application.
 
 \begin{figure}[tbp]
 	\subfigure[Home] {
-		\includegraphics[scale=0.3]{Figures/userHome.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userHome.png}
 		\label{fig:userHome}
 	}
 	\hspace{0.1in}
 	\subfigure[Record] {
-		\includegraphics[scale=0.3]{Figures/userRecord.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userRecord.png}
 		\label{fig:userRecord}
 	}
 	\hspace{0.1in}
 	\subfigure[Setting] {
-		\includegraphics[scale=0.3]{Figures/userSetting.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userSetting.png}
 		\label{fig:userSetting}
 	}
 	\hspace{0.1in}
 	\subfigure[Result] {
-		\includegraphics[scale=0.3]{Figures/userResult.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userResult.png}
 		\label{fig:userResult}
 	}
 	\hspace{0.1in}
 	\subfigure[Map] {
-		\includegraphics[scale=0.3]{Figures/userMap.png}
+		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userMap.png}
 		\label{fig:userMap}
 	}
 	\caption{User interface}
@@ -620,8 +608,8 @@ record, choose if they want to provide it to other users or delete it. After
 uploading the record, it will be deleted. \Cref{fig:userSetting}
 is the setting page. Users can change their sending rate (network flow)
 and searching range while finding parking space.
-\Cref{fig:userResult} is the result of searching. Users will know 
-how many parking spaces nearby. After choosing the one user prefers, 
+\Cref{fig:userResult} is the result of searching. Users will know
+how many parking spaces nearby. After choosing the one user prefers,
 the location will be shown on the map like \Cref{fig:userMap}.
 Therefore, user can be navigated to the space combined with Google API.
 
@@ -637,10 +625,8 @@ location at the same time. The last step is to confirm that client side
 can get the correct information immediately.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion and Future Work}\label{sec:conclusion}
+\section{Conclusion}\label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Conclusion}
 
 The goal of this system is to offer users a practical and useful
 application. Users are able to find parking spaces while having
@@ -652,47 +638,6 @@ cloud service, the technique to analyze images, and an application for
 Android. We expect to develop more applications on iPhone and Windows
 Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
-
-\subsection{Future work}
-
-\subsubsection{Accuracy of image recognition}
-
-The system will be affected by environment, for example, its error rate
-is on the high side at night or in the raining day. Theoretically, it
-can use different environmental variable to get over the situation like
-dark cloudy day. The difficulty is that the system needs to know the weather
-condition in advanced in order to choose which environmental variable is
-appropriate. The initial idea is based on information from area's
-weather bureau.
-
-As for night and raining day, it needs to modify from current algorithm.
-While it is at night, we may adjust the image to high brightness and
-contrast ratio in order to recognize parking space's line and vehicle
-in the space. While it is raining day, we need to get rid of raindrop and
-the noise in the image in order to make image clear enough to be recognized first.
-
-\subsubsection{Server load test}
-
-Because the system has not confronted the condition for multiple people to
-use, we are not sure that how much load it can support. We will spend
-more time finding more people to try it. Therefore, we can do both load
-testing and make it stable by testers' feedback.
-
-\subsubsection{Vehicular ad hoc networks (VANETs)}
-
-Vehicular ad hoc networks is a communication between vehicles through ad
-hoc network. It is a special network which connects transportation and transit facilities by the
-road. In comparison with ordinary ad hoc networks, vehicular ad hoc
-network can easily be customized; Besides, it has relatively higher
-transmission speed \cite{AdHoc}. Most of VANETs is used in Intelligent
-Transportation System (ITS) nowadays \cite{IOV2014}. Its nine main projects include
-security, transportation management, environmental information, and
-transmission of daily message.
-
-We hope that while the technique becomes mature in the future, the
-system can make vehicles communicate by VANETs directly. It will reduce
-the load for repeating analysis because only one vehicle will do
-analysis in the same group of vehicles at the same time section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgement}\label{sec:ack}
@@ -706,8 +651,6 @@ MOST 104-2815-C-006-029-E.
 \bibliographystyle{splncs03}
 \bibliography{iParking}
 
-
-All links were last followed on September 11, 2016.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
