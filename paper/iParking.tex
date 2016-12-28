@@ -52,9 +52,16 @@
 %=================================================================
 % Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed
 \usepackage{subfigure}
-\usepackage{cleveref}
+
+% tikz package
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usetikzlibrary{shapes.geometric, arrows}
+
+%enable \cref{...} and \Cref{...} instead of \ref: Type of reference included in the link
+\usepackage[capitalise,nameinlink]{cleveref}
+%Nice formats for \cref
+\crefname{section}{Sect.}{Sect.}
+\Crefname{section}{Section}{Sections}
 %=================================================================
 %% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
