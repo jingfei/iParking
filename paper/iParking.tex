@@ -486,9 +486,10 @@ vacant after received an image.
 
 First, the program will convert the image into gray scale. The reason is
 that the perspective of image will affect the degree of image
-recognition. Moreover, the image will be divided into four equal parts.
+recognition. Moreover, in order to eliminate the noise and white area such
+as sky and clouds, the image will be divided into four equal parts.
 Only the right-bottom part will be reserved because the spaces are
-usually located in the right hand side.
+usually located in the right hand side (in right-hand-traffic countries).
 
 \begin{figure}[tbp]
 	\subfigure[Gray scale image] {
@@ -502,7 +503,7 @@ usually located in the right hand side.
 	\label{fig:ROI}
 \end{figure}
 
-\subsubsection{Sides detection and Noise reduction on Image}
+\subsubsection{Sides detection and Noise reduction of Image}
 
 The program uses Canny edge detection in OpenCV to find each side of
 parking space. Afterward it reduces noise by the way, Median Blur.
@@ -524,18 +525,76 @@ parking space. Afterward it reduces noise by the way, Median Blur.
 	\end{minipage}
 \end{figure}
 
-\subsubsection{Find out parking spaces}
+\subsubsection{Find out Lines in the Image}
 
-First, find out straight line with Hough line detection. Detect
-which one is the line of parking space by angle and intersection of
-lines. (\Cref{drawParkingSpace})
+First, we use Hough line detection to detect straight lines
+by angle and intersection of lines.(\Cref{drawParkingSpace})
+With standard Hough transform function, a single-channel, grayscale image is sent.
+Next, the function will return a two-element vector lines $(\rho, \theta)$ while $\rho$ is the distance
+from the coordinate origin $(0, 0)$ and $\theta$ is the line rotation angle in radians.
+After getting lines, we divide lines into three parts, vertical lines ($tan\theta = 0$),
+horizontal lines ($tan\theta < -5$ or $tan\theta > 5$) and parking lines
+(neither vertical lines nor horizontal lines). It is also our approach to
+distinguish parking spots from roads.
+
+\subsubsection{Choose the Correct Lines}
+
+The next step is to choose the correct lines in pool composed of
+several lines with have same direction. Because the particular spot
+may not look same by different distance, angel, or camera.
+The program will find the longest length of parking space, which is
+also the line closed toand parallel to the road.
+
+From the result of Hough transform function, we get vector $(\rho, \theta)$.
+That is to say, we can get start and end points of each line in the same direction.
+Therefore, we get the parking line that is constructed by the
+average of all starting points and all end points.
+Finally, the longest line of parking space is reduced to a specific one.
+
+\subsubsection{Get the Appropriate Line Segment}
+
+Within the longest line we get from last step, it will have $n$ points of
+intersection if there are $n$ horizontal lines. Next, the points are
+sorted from small to large by their y value. And the program subtracts
+the second y value from the first one between each sorted point. If the
+result is more than 10, we suppose that the two pionts is not close.
+Therefore, we store the second point because they are not on the same line.
+After the process, the program gets several points which are on
+different horizontal lines. The last but not the least, we find the longest
+distance between the points. It is also the correct parking space's line
+segment that is closed to and parallel to the road such as \Cref{fig:lineSegment}.
+
+
+\begin{figure}[tbp]
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/lineSegment.png}
+		\caption{Blue line is the line segment}
+		\label{fig:lineSegment}
+	\end{minipage}
+	\hspace{0.5in}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/fourLines.png}
+		\caption{Find out all lines}
+		\label{fig:fourLines}
+	\end{minipage}
+\end{figure}
+
+\subsubsection{Determine each Line of Parking Space}
+
+By angle of view (AOV)\cite{AOV}, if we supposed that the length of
+straight line we get from last step is $m$, the length of top horizontal
+line is $m \times 0.9$, and the length of bottom horizontal line is $m \times 1.1$.
+Thus, as shown in \Cref{fig:fourLines}, the program will get the parking
+space by points, length and width.
+
+\subsubsection{Detect if the parking space is able to use}
 
 If the appropriate space is not found, the program will return the
 result of no vacant space (equals to occupied by vehicle). However, if
-the space is found, it will continue to next to detect if the space is
+the space is found, it will continue to detect if the space is
 able to use.
-
-\subsubsection{Detect if the parking space is able to use}
 
 If the ratio between the side of parking space and its shelter is more
 than a certain number, it means that the space has been occupied.
