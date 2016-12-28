@@ -33,17 +33,17 @@
 % The option pdftex is for use with pdfLaTeX. If eps figure are used, remove the option pdftex and use LaTeX and dvi2pdf.
 
 %=================================================================
-\firstpage{1}
-\makeatletter
-\setcounter{page}{\@firstpage}
-\makeatother
-\articlenumber{x}
-\doinum{10.3390/------}
-\pubvolume{xx}
-\pubyear{2016}
-\copyrightyear{2016}
-\externaleditor{Academic Editor: name}
-\history{Received: date; Accepted: date; Published: date}
+%\firstpage{1}
+%\makeatletter
+%\setcounter{page}{\@firstpage}
+%\makeatother
+%\articlenumber{x}
+%\doinum{10.3390/------}
+%\pubvolume{xx}
+%\pubyear{2016}
+%\copyrightyear{2016}
+%\externaleditor{Academic Editor: name}
+%\history{Received: date; Accepted: date; Published: date}
 
 %------------------------------------------------------------------
 % The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
@@ -80,14 +80,16 @@ Chia-Ying Lin, Meng-Hsun Tsai, Hui-Ling Chang}
 %\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-\address{jingfei@imslab.org}
+\address{Department of Computer Science and Information Engineering,\\
+National Cheng Kung University, Tainan, Taiwan\\
+jingfei@imslab.org}
 
 % Contact information of the corresponding author
 %\corres{Correspondence: e-mail@e-mail.com; Tel.: +x-xxx-xxx-xxxx}
 
 % Current address and/or shared authorship
-\firstnote{Department of Computer Science and Information Engineering,
-National Cheng Kung University, Tainan, Taiwan}
+%\firstnote{Department of Computer Science and Information Engineering,
+%National Cheng Kung University, Tainan, Taiwan}
 %\secondnote{These authors contributed equally to this work.}
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
@@ -454,7 +456,7 @@ vacant after received an image.
 
 \subsubsection{Setting ROI (Region of Interest)}
 
-First, as \Cref{fig:ROI}, the program will convert the image into gray scale. The reason is
+First, as \Cref{fig:grayScale} and \Cref{fig:ROI}, the program will convert the image into gray scale. The reason is
 that the perspective of image will affect the degree of image
 recognition. Moreover, in order to eliminate the noise and white area such
 as sky and clouds, the image will be divided into four equal parts.
@@ -462,38 +464,34 @@ Only the right-bottom part will be reserved because the spaces are
 usually located in the right hand side (in right-hand-traffic countries).
 
 \begin{figure}[tbp]
-	\subfigure[Gray scale image] {
-		\includegraphics[scale=0.8,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
-	}
-	\hspace{0.2in}
+  \centering
+  \subfigure[Gray scale image] {
+		\includegraphics[scale=0.9,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
+    \label{fig:grayScale}
+  }
+	\hspace{0.1in}
 	\subfigure[ROI image] {
-		\includegraphics[scale=0.8,natwidth=405,natheight=216]{Figures/ROIImage.png}
+		\includegraphics[scale=0.9,natwidth=405,natheight=216]{Figures/ROIImage.png}
+    \label{fig:ROI}
+  }
+  \subfigure[Detect each side] {
+    \includegraphics[scale=0.7,natwidth=444,natheight=236]{Figures/sideDetecting.png}
+    \label{fig:sideDetecting}
 	}
-	\caption{Setting ROI}
-	\label{fig:ROI}
+	\hspace{0.1in}
+	\subfigure[Draw parking space] {
+    \includegraphics[scale=0.7,natwidth=444,natheight=237]{Figures/drawParkingSpace.png}
+    \label{fig:drawParkingSpace}
+  }
+	\caption{Process of Image recognition}
+	\label{fig:process}
 \end{figure}
 
 \subsubsection{Sides detection and Noise reduction of Image}
 
 The program uses Canny edge detection in OpenCV to find each side of
 parking space. Afterward it reduces noise by the way, Median Blur.
-(\Cref{sideDetecting})
-
-\begin{figure}[tbp]
-	\begin{minipage}{.4\textwidth}
-		\centering
-		\includegraphics[scale=0.7,natwidth=444,natheight=236]{Figures/sideDetecting.png}
-		\caption{Detect each side}
-		\label{sideDetecting}
-	\end{minipage}
-	\hspace{0.5in}
-	\begin{minipage}{.4\textwidth}
-		\centering
-		\includegraphics[scale=0.7,natwidth=444,natheight=237]{Figures/drawParkingSpace.png}
-		\caption{Draw parking space}
-		\label{drawParkingSpace}
-	\end{minipage}
-\end{figure}
+(\Cref{fig:sideDetecting})
 
 \subsubsection{Find out Lines in the Image}
 
@@ -534,21 +532,19 @@ different horizontal lines. The last but not the least, we find the longest
 distance between the points. It is also the correct parking space's line
 segment that is closed to and parallel to the road such as \Cref{fig:lineSegment}.
 
-
 \begin{figure}[tbp]
-	\begin{minipage}{.4\textwidth}
-		\centering
-		\includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/lineSegment.png}
-		\caption{Blue line is the line segment}
-		\label{fig:lineSegment}
-	\end{minipage}
-	\hspace{0.5in}
-	\begin{minipage}{.4\textwidth}
-		\centering
-		\includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/fourLines.png}
-		\caption{Find out all lines}
-		\label{fig:fourLines}
-	\end{minipage}
+  \centering
+	\subfigure[Blue line is the line segment] {
+    \includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/lineSegment.png}
+    \label{fig:lineSegment}
+	}
+	\hspace{0.1in}
+	\subfigure[Find out all lines] {
+    \includegraphics[scale=0.5,natwidth=311,natheight=258]{Figures/fourLines.png}
+    \label{fig:fourLines}
+	}
+	\caption{Process of Image recognition}
+	\label{fig:findLine}
 \end{figure}
 
 \subsubsection{Determine each Line of Parking Space}
@@ -599,6 +595,7 @@ client's application.
 
 
 \begin{figure}[tbp]
+  \centering
 	\subfigure[Home] {
 		\includegraphics[scale=0.3,natwidth=165,natheight=315]{Figures/userHome.png}
 		\label{fig:userHome}
