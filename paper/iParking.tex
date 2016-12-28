@@ -84,7 +84,7 @@
 % \biboptions{}
 
 
-\journal{Vehicular comm.}
+\journal{Vehicular Communications}
 
 \begin{document}
 
@@ -111,8 +111,7 @@
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
 
-\title{iParking -- Real-Time Parking Space Monitor and Guiding System with Cloud Service}
-
+\title{iParking - A Real-Time Parking Space Monitoring and Guiding System}
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
 %% \address[label1]{<address>}
@@ -121,7 +120,8 @@
 \author{Ching-Fei Yang, You-Huei Ju, Chung-Ying Hsieh,
 Chia-Ying Lin, Meng-Hsun Tsai, Hui-Ling Chang}
 
-\address{CSIE, NCKU, No. 1 University Rd., Tainan 701, Taiwan, R.O.C.}
+\address{tsaimh@csie.ncku.edu.tw\\
+CSIE, NCKU, No. 1 University Rd., Tainan 701, Taiwan, R.O.C.}
 
 \begin{abstract}
 %% Text of abstract
@@ -464,9 +464,9 @@ before sending to servers in cloud.
 \section{Implementation}\label{sec:implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The system is divided into three parts - image recongization, cloud
+The system is divided into three parts - image recognition, cloud
 server, and client's application. At first, the three parts will be implemented
-separately. They will be combined and operate after they all make a certain proportain.
+separately. They will be combined and operate after they all make a certain proportion.
 
 \subsection{Image recognition of roadside parking space}
 
@@ -531,7 +531,7 @@ The next step is to choose the correct lines in pool composed of
 several lines with have same direction. Because the particular spot
 may not look same by different distance, angel, or camera.
 The program will find the longest length of parking space, which is
-also the line closed toand parallel to the road.
+also the line closed to and parallel to the road.
 
 From the result of Hough transform function, we get vector $(\rho, \theta)$.
 That is to say, we can get start and end points of each line in the same direction.
@@ -545,7 +545,7 @@ Within the longest line we get from last step, it will have $n$ points of
 intersection if there are $n$ horizontal lines. Next, the points are
 sorted from small to large by their y value. And the program subtracts
 the second y value from the first one between each sorted point. If the
-result is more than 10, we suppose that the two pionts is not close.
+result is more than 10, we suppose that the two points is not close.
 Therefore, we store the second point because they are not on the same line.
 After the process, the program gets several points which are on
 different horizontal lines. The last but not the least, we find the longest
