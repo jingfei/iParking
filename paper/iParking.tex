@@ -1,55 +1,54 @@
-%  LaTeX support: latex@mdpi.com
-%  In case you need support, please attach all files that are necessary for compiling as well as the log file, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[preprint,12pt]{elsarticle}
 
-% You need to save the "mdpi.cls" and "mdpi.bst" files into the same folder as this template file.
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
 
-%=================================================================
-\documentclass[journal,article,submit,moreauthors,pdftex,10pt,a4paper]{mdpi}
-%
-%--------------------
-% Class Options:
-%--------------------
-% journal
-%----------
-% Choose between the following MDPI journals:
-% actuators, admsci, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, atmosphere, atoms, axioms, batteries, bdcc, behavsci, beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci, buildings, carbon, cancers, catalysts, cells, challenges, chemengineering, chemosensors, children, chromatography, climate, coatings, computation, computers, condensedmatter, cosmetics, cryptography, crystals, data, dentistry, designs, diagnostics, diseases, diversity, econometrics, economies, education, electronics, energies, entropy, environments, epigenomes, fermentation, fibers, fishes, fluids, foods, forests, futureinternet, galaxies, games, gastrointestdisord, gels, genealogy, genes, geosciences, geriatrics, healthcare, horticulturae, humanities, hydrology, informatics, information, infrastructures, inorganics, insects, instruments, ijerph, ijfs, ijms, ijgi, ijtpp, inventions, jcdd, jcm, jdb, jfb, jfmk, jimaging, jof, jintelligence, jlpea, jmse, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, marinedrugs, materials, mathematics, mca, mti, medsci, medicines, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, molbank, molecules, mps, nanomaterials, ncrna, neonatalscreening, nutrients, ohbm, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, plants, polymers, processes, proteomes, publications, recycling, religions, remotesensing, resources, risks, robotics, safety, scipharm, sensors, separations, sexes, sinusitis, socsci, societies, soils, sports, standards, sustainability, symmetry, systems, technologies, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vetsci, viruses, vision, water
-%---------
-% article
-%---------
-% The default type of manuscript is article, but can be replaced by:
-% addendum, article, book, bookreview, briefreport, casereport, changes, comment, commentary, communication, conceptpaper, correction, conferenceproceedings, conferencereport, expressionofconcern, meetingreport, creative, datadescriptor, discussion, editorial, essay, erratum, hypothesis, interestingimage, letter, newbookreceived, opinion, obituary, projectreport, reply, retraction, review, perspective, preprints, shortnote, supfile, technicalnote, viewpoint
-% supfile = supplementary materials
-%----------
-% submit
-%----------
-% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g. the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
-%------------------
-% moreauthors
-%------------------
-% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
-%---------
-% pdftex
-%---------
-% The option pdftex is for use with pdfLaTeX. If eps figure are used, remove the option pdftex and use LaTeX and dvi2pdf.
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
 
-%=================================================================
-%\firstpage{1}
-%\makeatletter
-%\setcounter{page}{\@firstpage}
-%\makeatother
-%\articlenumber{x}
-%\doinum{10.3390/------}
-%\pubvolume{xx}
-%\pubyear{2016}
-%\copyrightyear{2016}
-%\externaleditor{Academic Editor: name}
-%\history{Received: date; Accepted: date; Published: date}
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
 
-%------------------------------------------------------------------
-% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
-%\pdfoutput=1
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
 
-%=================================================================
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
 % Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed
 \usepackage{subfigure}
 
@@ -62,42 +61,71 @@
 %Nice formats for \cref
 \crefname{section}{Sect.}{Sect.}
 \Crefname{section}{Section}{Sections}
-%=================================================================
-%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition
-%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+\pagenumbering{gobble}
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
 
-%=================================================================
-% Full title of the paper (Capitalized)
-\Title{iParking -- Real-Time Parking Space Monitor and Guiding System with Cloud Service}
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
 
-% If this is an expanded version of a conference paper, please cite it here: enter the full citation of your conference paper, and add $^\dagger$ in the end of the title of this article.
-%\conference{Title}
+% \biboptions{}
 
-% Authors, for the paper (add full first names)
-\Author{Ching-Fei Yang, You-Huei Ju, Chung-Ying Hsieh,
+
+\journal{Vehicular comm.}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{iParking -- Real-Time Parking Space Monitor and Guiding System with Cloud Service}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Ching-Fei Yang, You-Huei Ju, Chung-Ying Hsieh,
 Chia-Ying Lin, Meng-Hsun Tsai, Hui-Ling Chang}
-% Authors, for metadata in PDF
-%\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
 
-% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-\address{Department of Computer Science and Information Engineering,\\
-National Cheng Kung University, Tainan, Taiwan\\
-jingfei@imslab.org}
+\address{CSIE, NCKU, No. 1 University Rd., Tainan 701, Taiwan, R.O.C.}
 
-% Contact information of the corresponding author
-%\corres{Correspondence: e-mail@e-mail.com; Tel.: +x-xxx-xxx-xxxx}
-
-% Current address and/or shared authorship
-%\firstnote{Department of Computer Science and Information Engineering,
-%National Cheng Kung University, Tainan, Taiwan}
-%\secondnote{These authors contributed equally to this work.}
-% The commands \thirdnote{} till \eighthnote{} are available for further notes
-
-% Simple summary
-%\simplesumm{}
-
-% Abstract (Do not use inserted blank lines, i.e. \\)
-\abstract{By the popularization of cars, average number of vehicles owned by one person
+\begin{abstract}
+%% Text of abstract
+By the popularization of cars, average number of vehicles owned by one person
 grows with passing days. However, the number of parking areas is out of
 proportion. In order to satisfy the requirements of parking space and
 reduce illegal parking, we propose iParking, a real-time parking space
@@ -107,33 +135,25 @@ empty parking spaces through cloud computing, wireless technology
 between vehicles, and image analysis. It tells you the nearest location
 of empty parking space while drivers have requests. We expect the system
 to cause attention to more people and government while it solves relative
-problems about parking space.}
-% Keywords
-\keyword{cloud computing; image recognition; parking space management; wireless technology}
+problems about parking space.
+\end{abstract}
 
-% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
-%\PACS{J0101}
-%\MSC{}
-%\JEL{}
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+cloud computing \sep image recognition \sep parking space management
+\sep wireless technology
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+\end{keyword}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Data:
+\end{frontmatter}
 
-%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
+%%
+%% Start line numbering here if you want
+%%
+\linenumbers
 
-%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% For Conference Proceedings Papers: add the conference title here
-%\conferencetitle{}
-
-%\setcounter{secnumdepth}{4}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Only for the journal Gels: Please place the Experimental Section after the Conclusions
-
+%% main text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -353,14 +373,14 @@ whole the research. \Cref{fig:flowDiagram} is the flow diagram of these steps.
 width=3cm, minimum height=1cm,text centered, text width=3cm, draw=black, fill=red!30]
 	\tikzstyle{process} = [rectangle, minimum width=3cm, minimum
 height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
-	\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm,
-text centered, text width=3cm, draw=black, fill=green!30]
+	\tikzstyle{decision} = [diamond, minimum width=1cm, minimum height=1cm,
+text centered, text width=2cm, draw=black, fill=green!30]
 	\tikzstyle{arrow} = [thick,->,>=stealth]
 	\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium
 right angle=110, minimum width=2cm, minimum height=1cm, text centered,
 text width=3cm,  draw=black, fill=blue!30]
 
-	\begin{tikzpicture}[node distance=2cm]
+	\begin{tikzpicture}[node distance=1.8cm]
 	    % Place nodes
 	    \node [startstop] (init) {initialize model};
 	    \node [process, below of=init] (function) {plan for each function};
@@ -466,12 +486,12 @@ usually located in the right hand side (in right-hand-traffic countries).
 \begin{figure}[tbp]
   \centering
   \subfigure[Gray scale image] {
-		\includegraphics[scale=0.9,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
+		\includegraphics[scale=0.8,natwidth=401,natheight=214]{Figures/grayScaleImage.png}
     \label{fig:grayScale}
   }
 	\hspace{0.1in}
 	\subfigure[ROI image] {
-		\includegraphics[scale=0.9,natwidth=405,natheight=216]{Figures/ROIImage.png}
+		\includegraphics[scale=0.8,natwidth=405,natheight=216]{Figures/ROIImage.png}
     \label{fig:ROI}
   }
   \subfigure[Detect each side] {
@@ -665,59 +685,36 @@ Android. We expect to develop more applications on iPhone and Windows
 Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{6pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgments}\label{sec:ack}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\supplementary{The following are available online at www.mdpi.com/link, Figure S1: title, Table S1: title, Video S1: title.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\acknowledgments{his work was sponsored in part by Ministry of Science and Technology
+This work was sponsored in part by Ministry of Science and Technology
 (MOST), Taiwan, under the contract number MOST 105-2221-E-006-186- and
-MOST 104-2815-C-006-029-E.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``X.X. and Y.Y. conceived and designed the experiments; X.X. performed the experiments; X.X. and Y.Y. analyzed the data; W.W. contributed reagents/materials/analysis tools; Y.Y. wrote the paper.'' Authorship must be limited to those who have contributed substantially to the work reported.}
+MOST 104-2815-C-006-029-E.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\conflictofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funding sponsors in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The founding sponsors had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, and in the decision to publish the results''.}
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\abbreviations{The following abbreviations are used in this manuscript:\\
-%
-%\noindent
-%\begin{tabular}{@{}ll}
-%MDPI & Multidisciplinary Digital Publishing Institute\\
-%DOAJ & Directory of open access journals\\
-%TLA & Three letter acronym\\
-%LD & linear dichroism
-%\end{tabular}}
+%% \section{}
+%% \label{}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\appendixtitles{no} %Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-%\appendixsections{multiple} %Leave argument "multiple" if there are multiple sections. Then a counter is printed ("Appendix A"). If there is only one appendix section then change the argument to "one" and no counter is printed ("Appendix").
-%\appendix
-%\section{}
-%\subsection{}
-%The appendix is an optional section that can contain details and data supplemental to the main text. For example, explanations of experimental details that would disrupt the flow of the main text, but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data is shown in the main text can be added here if brief, or as Supplementary data. Mathemtaical proofs of results not central to the paper can be added as an appendix.
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}          ==>>  [#]
+%%   \cite[chap. 2]{key} ==>>  [#, chap. 2]
+%%   \citet{key}         ==>>  Author [#]
 
-%\section{}
-%All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g., Figure A1, Figure A2, etc.
+%% References with bibTeX database:
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here.
-\bibliographystyle{mdpi}
-
-%=====================================
-% References, variant B: external bibliography
-%=====================================
+\bibliographystyle{model1-num-names}
 \bibliography{iParking}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\sampleavailability{Samples of the compounds ...... are available from the authors.}
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use model1-num-names.bst.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
