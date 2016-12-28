@@ -446,6 +446,19 @@ is important for servers to analyze and collect data. As for UI design
 in app, in order to realize convenient searching function and interface,
 it need to be designed from the view of users.
 
+In \Cref{fig:system}, we divide the system into three parts, User A, User B, and Cloud server.
+User A sends images and GPS information through WiFi / 3G / 4G technique;
+User B sends request for parking, and get the parking space information
+immediately; And cloud server uses algorithm to know if there are any
+spaces and tell users the result if they have requests.
+
+\begin{figure}[tbp]
+	\centering
+		\includegraphics[width=0.8\textwidth,natwidth=1053,natheight=482]{Figures/flowChart.png}
+		\caption{System flow chart}
+		\label{fig:system}
+\end{figure}
+
 The error of GPS measurement is about 5 to 10 meters. We can say
 that it is about 1 or 2 roadside parking spaces. In order to enhance the
 accuracy, we will combine Google Maps API, take the advantage of its
@@ -459,14 +472,6 @@ not. It will not send information if anyone else is sending the data.
 However, if there is not anyone else sending the data, we plan to
 capture image immediately after moving a small and appropriate distance
 before sending to servers in cloud.
-
-\begin{figure}[tbp]
-	\centering
-		\includegraphics[width=0.8\textwidth,natwidth=1053,natheight=482]{Figures/flowChart.png}
-		\caption{System flow chart}
-		\label{fig:system}
-\end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementation}\label{sec:implementation}
@@ -484,7 +489,7 @@ vacant after received an image.
 
 \subsubsection{Setting ROI (Region of Interest)}
 
-First, the program will convert the image into gray scale. The reason is
+First, as \Cref{fig:ROI}, the program will convert the image into gray scale. The reason is
 that the perspective of image will affect the degree of image
 recognition. Moreover, in order to eliminate the noise and white area such
 as sky and clouds, the image will be divided into four equal parts.
@@ -528,7 +533,7 @@ parking space. Afterward it reduces noise by the way, Median Blur.
 \subsubsection{Find out Lines in the Image}
 
 First, we use Hough line detection to detect straight lines
-by angle and intersection of lines.(\Cref{drawParkingSpace})
+by angle and intersection of lines.
 With standard Hough transform function, a single-channel, grayscale image is sent.
 Next, the function will return a two-element vector lines $(\rho, \theta)$ while $\rho$ is the distance
 from the coordinate origin $(0, 0)$ and $\theta$ is the line rotation angle in radians.
