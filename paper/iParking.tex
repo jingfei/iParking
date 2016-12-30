@@ -111,37 +111,46 @@
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
 
-\title{iParking - A Real-Time Parking Space Monitoring and Guiding System}
+\title{iParking - A Real-Time Parking Space Monitoring and Guiding System
+\thanks{This paper is an extended version of our conference paper in the 3rd
+International Conference on Internet of Vehicles (IOV), 2016 \cite{IOV2016}.}}
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
 %% \address[label1]{<address>}
 %% \address[label2]{<address>}
 
 \author{Ching-Fei Yang, You-Huei Ju, Chung-Ying Hsieh,
-Chia-Ying Lin, Meng-Hsun Tsai, Hui-Ling Chang}
+Chia-Ying Lin}
+\author[corr]{Meng-Hsun Tsai}
+\author{Hui-Ling Chang}
 
-\address{tsaimh@csie.ncku.edu.tw\\
-CSIE, NCKU, No. 1 University Rd., Tainan 701, Taiwan, R.O.C.}
+
+\address[corr]{Corresponding author. Email address: tsaimh@csie.ncku.edu.tw (M.-H. Tsai)}
+\address{Department of Computer Science and Information Engineering, \\ National Cheng Kung University}
+\address{No. 1 University Rd., Tainan 701, Taiwan, R.O.C.}
 
 \begin{abstract}
 %% Text of abstract
-By the popularization of cars, average number of vehicles owned by one person
-grows with passing days. However, the number of parking areas is out of
-proportion. In order to satisfy the requirements of parking space and
-reduce illegal parking, we propose iParking, a real-time parking space
-monitoring and guiding system, in this paper.
-We lay emphasis on roadside parking. The system determines and records
-empty parking spaces through cloud computing, wireless technology
-between vehicles, and image analysis. It tells you the nearest location
-of empty parking space while drivers have requests. We expect the system
-to cause attention to more people and government while it solves relative
-problems about parking space.
+%By the popularization of cars, average number of vehicles owned by one person
+%grows with passing days.
+Shortage and imbalance of parking spaces have become serious problems in recent years.
+%However, the number of parking areas is out of proportion.
+Drivers may choose nearby illegal area for parking when available parking spaces are all out of sight.
+To mitigate illegal parking, we propose iParking, a real-time parking space monitoring and guiding system, in this paper.
+We lay emphasis on roadside parking.
+%The system determines and records available parking spaces through cloud computing, wireless technology between vehicles, and image analysis.
+In the proposed system, the availability of parking spaces is recognized through image analysis, where the images come from the event recorders embedded in cars on the roads.
+Upon receipt of a parking request, the system searches for a nearest parking space and then returns the location to the requesting driver.
+Based on the received location, the car can be navigated to the available parking space by its own navigation system.
+%It tells you the nearest location of available/empty parking space while drivers have requests.
+%We expect the system to cause attention to more people and government while it solves relative problems about parking space.
+We expect the system to benefit all drivers and the government, and to improve safety and traffic on the roads.
 \end{abstract}
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword
 cloud computing \sep image recognition \sep parking space management
-\sep wireless technology
+\sep wireless transmission
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
 \end{keyword}
@@ -161,7 +170,8 @@ cloud computing \sep image recognition \sep parking space management
 Recently, parking problem has become people's harassment.
 It is shown from statistical data in Ministry of
 Transportation, Taiwan that the number of registered vehicles is
-7,554,319 until December 2014 \cite{motc}; However, it is also mentioned that
+7,554,319 until December 2014 \cite{motc}.
+However, it is also mentioned that
 the number of legal parking space is about four million in total.
 Furthermore, it will cause several problems such as the extremely slow
 speed while finding parking space, scrambling for roads with scooters,
@@ -175,7 +185,7 @@ illegal parking.
 
 Over the last few years, LBS (Location-Based Service) \cite{LBS} is getting noticed along with
 the appearance of smartphones. LBS can apply broadly to different area
-like health, job, daily life, and etc. Thus, how to use LBS to help
+like health, job, daily life, etc. Thus, how to use LBS to help
 different users find the appropriate parking space is vital. The usage
 of monitoring parking space now is to provide roadside parking space's
 locations at best, but it will not tell drivers where the vacant space
@@ -225,7 +235,7 @@ Furthermore, some recent researches verify that people would rather
 spend more time finding roadside parking space than off-street parking
 even if there are vacant spaces in the off-street parking lot \cite{OnStreetParking}. Take
 Tainan City for example, service in parking lot does not meet drivers'
-expect, such as high parking fee, mess surroundings, or etc. Hence, the
+expect, such as high parking fee, mess surroundings, etc. Hence, the
 situation results in low usage rate of parking lot and shortage of
 roadside parking space. Thus, to solve the problem of roadside parking
 is necessary.
@@ -415,7 +425,7 @@ text width=3cm,  draw=black, fill=blue!30]
 The main usage of cloud service is to implement each operated function,
 handle users' request, and provide storage to save driving records. The
 operated function includes receiving image data from users, analyzing
-images, building database, searching database, and etc. Hold time is the
+images, building database, searching database, etc. Hold time is the
 first concern because of massive calculation. The other factor is the
 availability of data, for example, we will not use old data and data
 which has been analyzed in the same location. This algorithm will help
@@ -686,7 +696,7 @@ Phone. Besides, we look forward to doing more research on accuracy of
 image recognition, server load balance, and Vehicular ad hoc network.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Acknowledgments}\label{sec:ack}
+\section*{Acknowledgments}\label{sec:ack}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This work was sponsored in part by Ministry of Science and Technology
@@ -710,6 +720,7 @@ MOST 104-2815-C-006-029-E.
 
 %% References with bibTeX database:
 
+\section*{References}
 \bibliographystyle{model1-num-names}
 \bibliography{iParking}
 
